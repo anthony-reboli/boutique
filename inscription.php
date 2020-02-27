@@ -42,6 +42,12 @@ if (!isset($_SESSION["login"])) {
                 <input type="password" name='mdp2' required />
             </article>
 
+
+            <article>
+                <label> Votre Email </label>
+                <input type="email" name='email' required />
+            </article>
+
             <input class="bouton" type='submit' name='inscription' value='Inscription' />
 
             <?php
@@ -51,6 +57,7 @@ if (!isset($_SESSION["login"])) {
             $login = $_POST['login'];
             $mdp= password_hash($_POST["mdp1"], PASSWORD_DEFAULT, array('cost' => 12));
             $name = $_POST['name'];
+            $email = $_POST['email'];
         
 
             if ($_POST['mdp1']==$_POST['mdp2'])
@@ -69,8 +76,8 @@ if (!isset($_SESSION["login"])) {
            }
            if ($trouve==false)
            {
-            $sql = "INSERT INTO utilisateurs (login,password)
-                VALUES ('$login','$mdp')";
+            $sql = "INSERT INTO utilisateurs (login,password,email)
+                VALUES ('$login','$mdp','$email')";
             $query=mysqli_query($connexion,$sql);
             header('location:connexion.php');
             }

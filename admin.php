@@ -1,6 +1,7 @@
  
 <?php
 session_start();
+date_default_timezone_set('europe/paris');
   include("bar-nav.php");
  
     if (isset($_SESSION['login'])==false)
@@ -50,7 +51,7 @@ session_start();
 								var_dump($reponse);
 								$reponse2 = $connexion->query( "SELECT *FROM produits");
 								$i=0;
-								foreach ($reponse2 as list($id,$nomproduit,$prixproduit,$description,$user,$photo)) {
+								foreach ($reponse2 as list($id,$nomproduit,$prixproduit,$description,$user,$photo,$souscategories,$date)) {
 								if (isset($_SESSION['login'])=='admin') {
 								?>
 									
@@ -60,6 +61,8 @@ session_start();
 									<p><?php echo $description?></p>
 									<p><?php echo $user?></p>
 									<p><?php echo "<img src=\"upload/$photo\">"?></p>
+									<p><?php echo $souscategories?></p>
+									<p><?php echo $date?></p>
 								
 								<?php
 								$i++;
@@ -72,13 +75,15 @@ session_start();
 								<?php
 
 								if (isset($_POST['valider'])) {
-									if (!empty($_POST['titre'])&& !empty($_POST['prix'])&& !empty($_POST['description'])&& !empty($_POST['photo'])) {
+									if (!empty($_POST['titre'])&& !empty($_POST['prix'])&& !empty($_POST['description'])&& !empty($_POST['photo'])&& !empty($_POST['souscategories'])) {
 													$titre = $_POST['titre'];
 									                $prix = $_POST['prix'];
 									                $description = $_POST['description'];
 									                $photo = $_POST['photo'];
+									                $souscategories = $_POST['souscategories'];
 									                $id = $_SESSION['id'];
-													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image) VALUES ('$titre', '$prix', '$description', '$id', '$photo')");
+									                $date= date("Y-m-d H:i:s");
+													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image,souscategories,dateajout) VALUES ('$titre', '$prix', '$description', '$id', '$photo','$souscategories','".$date."')");
 													var_dump($requete);
 													$requete->execute();
 													var_dump($connexion);
@@ -93,8 +98,10 @@ session_start();
 							                    <input type="text" name="prix"></br>
 							                    <label>Description</label></br>
 							                    <input type="text" name="description" required></br>
-							                   	<label>Photo</label></br>
+							                   	<label>Photo</label></br>							         
 							                   	<input type="file" name="photo" required></br>
+							                   	<label>Sous Catégories</label></br>
+							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="Envoyer" name="valider"></br>
 							   </form>
 							   	<?php
@@ -107,7 +114,9 @@ session_start();
 									                $description = $_POST['description'];
 									                $photo = $_POST['photo'];
 									                $id = $_SESSION['id'];
-													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2',description= '$description', id_utilisateurs= '$id',image= '$photo'  WHERE nomproduit = '$titre3'");
+									                $date= date("Y-m-d H:i:s");
+									                $souscategories = $_POST['souscategories'];
+													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2',description= '$description', id_utilisateurs= '$id',image= '$photo',souscategories='$souscategories',dateajout='$date' WHERE nomproduit = '$titre3'");
 													var_dump($requete2);
 													$requete2->execute();
 													var_dump($connexion);
@@ -124,8 +133,10 @@ session_start();
 							                    <input type="text" name="prix2"></br>
 							                    <label>Description</label></br>
 							                    <input type="text" name="description" required></br>
-							                    <label>Photo</label></br>
+							                    <label>Photo</label></br>							                    
 							                   	<input type="file" name="photo" required></br>
+							                   	<label>Sous Catégories</label></br>
+							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="modifier" name="modifier"></br>
 							      </form>
 							   <?php
