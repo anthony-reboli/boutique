@@ -24,20 +24,15 @@ session_start();
 
 
 
-if (isset($_SESSION['login']) =='admin') {
-	$connexion =  mysqli_connect("localhost","root","","boutique");
-	$id = $_SESSION['id'];
-	$req="SELECT * FROM `produits` WHERE id=$id ";
-	var_dump($req);
-	$query=mysqli_query($connexion,$req);
-	var_dump($query);
-
-
+				if (isset($_SESSION['login']) =='admin') {
+					$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+					$id = $_SESSION['id'];
+					$req = $connexion->query("SELECT * FROM produits WHERE id=$id ");
+					var_dump($req);
 }
 ?>
 
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Espace Administrateur - Boutique </title>
@@ -47,11 +42,9 @@ if (isset($_SESSION['login']) =='admin') {
 <header>
 
 </header>
-<section>
+		<section>
 			<h1 class="titre">Nos Produits</h1>
-						<?php
-						
-								
+						<?php								
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 								$reponse = $connexion->query( "SELECT *FROM produits INNER JOIN utilisateurs WHERE utilisateurs.id=produits.id");
 								var_dump($reponse);
@@ -62,7 +55,7 @@ if (isset($_SESSION['login']) =='admin') {
 								?>
 									
 									<p><?php echo $id?></p>
-									 <a href="admin.php"><?php echo $nomproduit?></a> 
+									<a href="admin.php"><?php echo $nomproduit?></a> 
 									<p><?php echo $prixproduit?></p>
 									<p><?php echo $description?></p>
 									<p><?php echo $user?></p>
@@ -135,6 +128,30 @@ if (isset($_SESSION['login']) =='admin') {
 							                   	<input type="file" name="photo" required></br>
 							                    <input type="submit" value="modifier" name="modifier"></br>
 							      </form>
+							   <?php
+							   if (isset($_POST['effacer'])) {
+							   		if (!empty($_POST['titre4']))
+											 			{
+											 			$titre4 = $_POST['titre4']; 
+										                $id = $_SESSION['id'];
+									        			$requete3 = $connexion->prepare("DELETE FROM produits WHERE nomproduit = '$titre4'");
+									        			var_dump($requete3);
+									        			$requete3->execute();
+									        			header('Location:admin.php');
+
+									        			
+												
+		
+				   										}
+
+							   	
+							   }
+							   ?>
+							    <form method="post" class="ajout">
+							                    <label>Titre</label></br>
+							                    <input type="text" name="titre4" required></br>
+							                    <input type="submit" value="effacer" name="effacer"></br>
+							    </form>
 
 						
 </section>
