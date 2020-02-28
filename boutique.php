@@ -7,7 +7,11 @@
 <body>
 	<header>
 		<?php include("bar-nav.php");?>
-
+	</header>
+	<main>
+		<?php
+		$bdd= mysqli_connect("localhost","root","","boutique");
+		?>
 <!-- Choix de categorie -->
 <label for="categorie-select">Choisir la categorie:</label>
 <form name="form-bout"method="post" type="">
@@ -17,9 +21,19 @@
 	<option value="thehiere">thehiere</option>
 </select>
 <input type="submit" name="catpage">
+<br>
+
+
+<select name="sc_b" id="categorie-select">
+	<option value="">--sous categories--</option>
+	<option value="sachet">sachets</option>
+	<option value="boite">boites</option>
+</select>
+<input type="submit" name="catpage2">
 </form>
 
 <?php 
+// categoerie
  if(isset($_POST['catpage']))
 	{
 	if($_POST['pagear'] == the)
@@ -32,6 +46,52 @@
 			}
 	}
 
+	// sous categories
+	 if(isset($_POST['catpage2']))
+	{
+	if($_POST['sc_b'] == 'sachet')
+		 {
+		 // header("location:boutique.php");
+	 $requete2="SELECT * from produits where categories = '1' and souscategories = 'sachet'";
+	 $query2=mysqli_query($bdd, $requete2);
+	 
+	 
+while($data= mysqli_fetch_assoc($query2))
+	  {
+	  		$i=0;
+	  		$did=$data['id'];
+	  		$img=$data['image'];
+	  		$dnp=$data['nomproduit'];
+	  		var_dump($data);
+	  	echo"<section class=\"thep\">";
+	  	echo" <div class=\"theb\">";
+		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		echo "<img class=\"imagebout\" src=\"upload/$img\">";
+		echo "<p>{$data['description']}</p>";
+		echo "<p>{$data['prixproduit']}</p>";
+		
+		
+		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "</div>";
+		echo"</section>";
+		$i++;
+
+
+
+
+		
+		
+		
+	  }
+		
+		 }
+			elseif($_POST['sc-b'] == boite)
+			{
+				header("location:boutique2.php"); 
+			}
+	}
+
  // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
@@ -39,9 +99,9 @@
 
 
 	
-	$bdd= mysqli_connect("localhost","root","","boutique");
+	
 
-		 $requete="SELECT * from produits where souscategories = 1";
+		 $requete="SELECT * from produits where categories = 1";
 	 $query=mysqli_query($bdd, $requete);
 	 $reponse=mysqli_fetch_all($query);
 
@@ -52,34 +112,8 @@
 	<h1>Notre boutique</h1>
 
 
-<!-- Affiche les Article -->
+
 	<?php
-	// $i=0;
-	// $photo=0;
-	//  foreach ($reponse as $key => $value) {
-			
-	// echo"<section id=\"$photo\">";
-	//  echo"<div class=\"photo\">";
-	//  echo $reponse[$i][1];
-
-	//  $photo= $reponse[$i][5];
-
-	//  echo "<img class=\"imagebout\" src=\"upload/$photo\">";
-	//  echo"<p>Description de lobjet en question</p>";
-	//  echo $reponse[$i][2];
-	//  echo "<button  class=\"$photo\"
-	// 	type=\"button\"> panier</button>";
-	//  $i++;
-	//  $photo++;
-	//  $photo= "photo[$i]";
-	//  echo "</div>";
-	//  echo "</section>";
-	//  }
-
-
-
-
-
 
 // paginatation
 	 $countproduit="SELECT COUNT(id) as nbArt from produits";
@@ -102,7 +136,7 @@
 	 	$cpage= 1;
 	 }
 
-	 $requeteproduit="SELECT * FROM produits where souscategories=1 ORDER by dateajout DESC LIMIT ".(($cpage-1)*$perpage).",$perpage";
+	 $requeteproduit="SELECT * FROM produits where categories=1 ORDER by dateajout DESC LIMIT ".(($cpage-1)*$perpage).",$perpage";
 	 var_dump($requeteproduit);
 	 $queryproduit= mysqli_query($bdd,$requeteproduit);
 	 
@@ -110,28 +144,37 @@
 	  while($data= mysqli_fetch_assoc($queryproduit))
 	  {
 	  		$i=0;
+	  		$did=$data['id'];
 	  		$img=$data['image'];
+	  		$dnp=$data['nomproduit'];
+	  		var_dump($data);
 	  	echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		echo "<h1>{$data['nomproduit']}</h1>";
+		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
 		echo "<p>{$data['description']}</p>";
 		echo "<p>{$data['prixproduit']}</p>";
-		echo "<input type=\"submit\" name=\"boutiqueb[$i]\">";
+		
+		
+		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		echo"</section>";
 		$i++;
 
 
+
+
 		
 		
-		var_dump($data['image']);
+		
 	  }
 
 	    for($i=1;$i<=$nbPage;$i++){
 	    	echo "<a href=\"boutique.php?p=$i\">$i</a> /";
 	    }
-	    var_dump($data);
+	    
+
 	?>
 
 
