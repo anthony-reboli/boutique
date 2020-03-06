@@ -1,4 +1,7 @@
   <?php
+  
+    $id=$_SESSION['id'];
+
     if (isset($_SESSION['login'])==false)
     {
     ?>
@@ -10,7 +13,7 @@
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="boutique.php">Boutique</a></li>
-            <li><a href="panier.php">Panier</a></li>
+            <li><a href="panier.php?id=<?php echo $id;?>">Panier</a></li>
             <li><a href="inscription.php">Inscription</a></li>
             <li><a href="connexion.php">Connexion</a></li>
         </ul>
@@ -32,7 +35,7 @@
       <ol>
       	<li><a href="index.php">Accueil</a></li>
             <li><a href="boutique.php">Boutique</a></li>
-            <li><a href="panier.php">Panier</a></li>
+            <li><a href="panier.php?id=<?php echo $id;?>">Panier</a></li>
             <li><a href="inscription.php">Inscription</a></li>
             <li><a href="admin.php">Espace Administrateur</a></li>
             <li><a href="admin.php?deconnexion=true">Déconnexion</a>

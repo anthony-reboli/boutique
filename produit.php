@@ -19,9 +19,6 @@
 								 echo "<div>";
 							
 								    echo "<p>".$nomproduit."</p>";
-								    ?>
-								   
-								    <?php
 								    echo "<p>".$prixproduit."</p>";
 								    echo "<p>".$description."</p>";
 								    echo "<img src=\"upload/".$image."\">";
@@ -42,6 +39,3 @@
 
 
 ?>
-<form>
-<input method= get type="button" name="ajout">Ajoutez au panier
-</form>

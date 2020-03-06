@@ -32,6 +32,18 @@ if (!isset($_SESSION["login"])) {
                 <label> Login </label>
                 <input type="text" name='login' required />
             </article>
+
+            <article>
+                <label> Nom </label>
+                <input type="text" name='nom' required />
+            </article>
+
+
+            <article>
+                <label> Prénom </label>
+                <input type="text" name='prenom' required />
+            </article>
+
             <article>
                 <label> Mot de passe </label>
                 <input type="password" name='mdp1' required />
@@ -40,6 +52,18 @@ if (!isset($_SESSION["login"])) {
             <article>
                 <label> Confirmation de mot de passe </label>
                 <input type="password" name='mdp2' required />
+            </article>
+
+
+            <article>
+                <label> Votre adresse </label>
+                <input type="text" name='adresse' required />
+            </article>
+
+
+            <article>
+                <label> Votre code postal </label>
+                <input type="number" name='code' required />
             </article>
 
 
@@ -55,9 +79,14 @@ if (!isset($_SESSION["login"])) {
         if (isset($_POST['inscription']))
        {
             $login = $_POST['login'];
-            $mdp= password_hash($_POST["mdp1"], PASSWORD_DEFAULT, array('cost' => 12));
-            $name = $_POST['name'];
+            $nom = $_POST['nom'];
+            $prenom = $_POST['prenom'];
             $email = $_POST['email'];
+            $mdp= password_hash($_POST["mdp1"], PASSWORD_DEFAULT, array('cost' => 12));
+            $adresse = $_POST['adresse'];
+            $code = $_POST['code'];
+            $email = $_POST['email'];
+
         
 
             if ($_POST['mdp1']==$_POST['mdp2'])
@@ -76,8 +105,8 @@ if (!isset($_SESSION["login"])) {
            }
            if ($trouve==false)
            {
-            $sql = "INSERT INTO utilisateurs (login,password,email)
-                VALUES ('$login','$mdp','$email')";
+            $sql = "INSERT INTO utilisateurs (login,nom,prenom,password,adresse,codepostal,email)
+                VALUES ('$login','nom','prenom','$mdp','$adresse','$code','$email')";
             $query=mysqli_query($connexion,$sql);
             header('location:connexion.php');
             }

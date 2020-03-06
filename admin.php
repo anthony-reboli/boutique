@@ -45,13 +45,14 @@ date_default_timezone_set('europe/paris');
 </header>
 		<section>
 			<h1 class="titre">Nos Produits</h1>
-						<?php								
+						<?php	
+														
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 								$reponse = $connexion->query( "SELECT *FROM produits INNER JOIN utilisateurs WHERE utilisateurs.id=produits.id");
 								var_dump($reponse);
 								$reponse2 = $connexion->query( "SELECT *FROM produits");
 								$i=0;
-								foreach ($reponse2 as list($id,$nomproduit,$prixproduit,$description,$user,$photo,$souscategories,$date)) {
+								foreach ($reponse2 as list($id,$nomproduit,$prixproduit,$description,$user,$photo,$categories,$souscategories,$date)) {
 								if (isset($_SESSION['login'])=='admin') {
 								?>
 									
@@ -61,6 +62,7 @@ date_default_timezone_set('europe/paris');
 									<p><?php echo $description?></p>
 									<p><?php echo $user?></p>
 									<p><?php echo "<img src=\"upload/$photo\">"?></p>
+									<p><?php echo $categories?></p>
 									<p><?php echo $souscategories?></p>
 									<p><?php echo $date?></p>
 								
@@ -80,10 +82,11 @@ date_default_timezone_set('europe/paris');
 									                $prix = $_POST['prix'];
 									                $description = $_POST['description'];
 									                $photo = $_POST['photo'];
+									                $categories = $_POST['categories'];
 									                $souscategories = $_POST['souscategories'];
 									                $id = $_SESSION['id'];
 									                $date= date("Y-m-d H:i:s");
-													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image,souscategories,dateajout) VALUES ('$titre', '$prix', '$description', '$id', '$photo','$souscategories','".$date."')");
+													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image,categories,souscategories,dateajout) VALUES ('$titre', '$prix', '$description', '$id', '$photo','$categories','$souscategories','".$date."')");
 													var_dump($requete);
 													$requete->execute();
 													var_dump($connexion);
@@ -100,6 +103,8 @@ date_default_timezone_set('europe/paris');
 							                    <input type="text" name="description" required></br>
 							                   	<label>Photo</label></br>							         
 							                   	<input type="file" name="photo" required></br>
+							                   	<label>Catégories</label></br>
+							                    <input type="text" name="categories" required></br>
 							                   	<label>Sous Catégories</label></br>
 							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="Envoyer" name="valider"></br>
@@ -115,8 +120,9 @@ date_default_timezone_set('europe/paris');
 									                $photo = $_POST['photo'];
 									                $id = $_SESSION['id'];
 									                $date= date("Y-m-d H:i:s");
+									                $categories = $_POST['categories'];
 									                $souscategories = $_POST['souscategories'];
-													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2',description= '$description', id_utilisateurs= '$id',image= '$photo',souscategories='$souscategories',dateajout='$date' WHERE nomproduit = '$titre3'");
+													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2',description= '$description', id_utilisateurs= '$id',image= '$photo',categories='$categories',souscategories='$souscategories',dateajout='$date' WHERE nomproduit = '$titre3'");
 													var_dump($requete2);
 													$requete2->execute();
 													var_dump($connexion);
@@ -124,7 +130,7 @@ date_default_timezone_set('europe/paris');
 								
 								}
 							  ?>
-							  	  <form method="post" class="ajout">
+							  	  <form method="post">
 								  				<label>Recherche Articles</label></br>
 							                    <input type="text" name="titre3" required></br>
 							                    <label>Modifier Articles</label></br>
@@ -135,6 +141,8 @@ date_default_timezone_set('europe/paris');
 							                    <input type="text" name="description" required></br>
 							                    <label>Photo</label></br>							                    
 							                   	<input type="file" name="photo" required></br>
+							                   	<label>Catégories</label></br>
+							                    <input type="text" name="categories" required></br>
 							                   	<label>Sous Catégories</label></br>
 							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="modifier" name="modifier"></br>
@@ -148,17 +156,12 @@ date_default_timezone_set('europe/paris');
 									        			$requete3 = $connexion->prepare("DELETE FROM produits WHERE nomproduit = '$titre4'");
 									        			var_dump($requete3);
 									        			$requete3->execute();
-									        			header('Location:admin.php');
-
 									        			
-												
-		
-				   										}
 
-							   	
+				   										}						   	
 							   }
 							   ?>
-							    <form method="post" class="ajout">
+							    <form method="post">
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre4" required></br>
 							                    <input type="submit" value="effacer" name="effacer"></br>

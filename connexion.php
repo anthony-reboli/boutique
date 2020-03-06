@@ -11,9 +11,10 @@
         $requete = "SELECT * FROM utilisateurs WHERE login ='".$_POST['login']."'";
         $query = mysqli_query($connexion, $requete);
         $resultat = mysqli_fetch_all($query);
+        var_dump($resultat);
 
         if ( !empty($resultat) ) {
-            if ( password_verify($_POST['password'], $resultat[0][2]) )
+            if ( password_verify($_POST['password'], $resultat[0][4]) )
                     {
                         $_SESSION['login'] = $_POST['login'];
                         $_SESSION['rank'] = $resultat[0][5];
