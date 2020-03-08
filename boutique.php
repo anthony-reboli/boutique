@@ -14,20 +14,117 @@
 		<?php
 		$bdd= mysqli_connect("localhost","root","","boutique");
 		?>
+
+		<!-- recherche -->
+		<form name="recherche" method="get">
+			<label>RECHERCHER PAR NOM</label>
+			<br>
+			<input type="search"  name="bs"
+       aria-label="rechercher par titre">
+   
+	
+
+
+<input type="submit" name="recheb"/>
+
+		
+		
+		
+		
+
+		
+
+
+		
+		<br>
+		<label for="categorie-select">Choisir la categorie:</label>
+</form>
+<?php
+
+  				if (isset($_GET['recheb']))
+  				{
+  					$bs=$_GET['bs'];
+
+  					echo "reste";
+  					  				$rechercheb= "SELECT * from produits where nomproduit = '$bs'";
+									var_dump($rechercheb);
+									$recherchebq= mysqli_query($bdd,$rechercheb);
+									$resultatb= mysqli_fetch_all($recherchebq);
+									var_dump($resultatb);
+  				
+
+
+					if (!empty($bs) and !empty($bs) == (isset($resultatb[0][1])))
+					{
+						echo "true";
+
+						
+				foreach($resultatb as $data6)
+				{
+					
+
+
+	  
+	  		$j=0;
+
+	  		$did=$data6[0];
+	  		$img=$data6[5];
+	  		$dnp=$data6[1];
+	  		var_dump($data6);
+	  	echo"<section class=\"thep\">";
+	  	echo" <div class=\"theb\">";
+		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		echo "<img class=\"imagebout\" src=\"upload/$img\">";
+		echo "<p>{$data6[3]}</p>";
+		echo "<p>{$data6[2]}</p>";
+		
+		
+		
+		echo "</div>";
+		echo"</section>";
+		$j++;
+
+
+
+
+		
+		
+		
+	  
+						// echo $resultatb[0][1];
+						// echo $resultatb[0][2];
+						// echo $resultatb[0][3];
+						// echo $resultatb[0][4];
+					
+					}
+				}
+
+					else {
+						echo "VOTRE RECHERCHE N'EST PAS ACCESSIBLE";
+					}
+					
+					
+				}
+					?>
+
+
 <!-- Choix de categorie -->
-<label for="categorie-select">Choisir la categorie:</label>
-
-<form name="form-bout"method="post" type="">
-<select name="pagear" id="categorie-select">
-	<option value="">--choisir une option--</option>
-	<option value="the">the</option>
-	<option value="thehiere">thehiere</option>
-</select>
-
-					<?php
 
 
 
+
+	<form name="form-bout"method="post" type="">
+		<select name="pagear" id="categorie-select">
+			<option value="">--choisir une option--</option>
+			<option value="the">the</option>
+			<option value="thehiere">thehiere</option>
+		</select>
+
+
+
+
+<?php
 $requete4="SELECT * from produits where categories = '1'";
 	 $query4=mysqli_query($bdd, $requete4);
 
