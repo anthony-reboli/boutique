@@ -3,12 +3,11 @@
  
 
 					session_start();
-
+								$id=$_GET['id'];
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								$reponse = $connexion->query( "SELECT *FROM produits INNER JOIN utilisateurs WHERE utilisateurs.id=produits.id");
+								$reponse = $connexion->query( "SELECT *FROM produits INNER JOIN utilisateurs WHERE id_utilisateurs=$id");
 								var_dump($reponse);
-								$iduser = $_SESSION["id"];
-								$reponse2 = $connexion->query( "SELECT  nomproduit, prixproduit, description, image, souscategories, dateajout FROM produits WHERE id_utilisateurs=$iduser");
+								$reponse2 = $connexion->query( "SELECT  nomproduit, prixproduit, description, image, souscategories, dateajout FROM produits WHERE id_utilisateurs=$id");
 								$reponse2->fetch();
 								$reponse2->execute();
 								var_dump($reponse2);

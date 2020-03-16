@@ -94,14 +94,14 @@ date_default_timezone_set('europe/paris');
 								
 								}
 							  ?>
-							  <form method="post">
+							  <form method="post" action="boutique.php">
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre" required></br>
 							                    <label>Prix</label></br>
 							                    <input type="text" name="prix"></br>
 							                    <label>Description</label></br>
 							                    <input type="text" name="description" required></br>
-							                   	<label>Photo</label></br>							         
+							                   	<label>Photo</label></br>							    
 							                   	<input type="file" name="photo" required></br>
 							                   	<label>Catégories</label></br>
 							                    <input type="text" name="categories" required></br>
@@ -119,7 +119,7 @@ date_default_timezone_set('europe/paris');
 									                $description = $_POST['description'];
 									                $photo = $_POST['photo'];
 									                $id = $_SESSION['id'];
-									                $date= date("Y-m-d H:i:s");
+									                $date= date("Y-m-d");
 									                $categories = $_POST['categories'];
 									                $souscategories = $_POST['souscategories'];
 													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2',description= '$description', id_utilisateurs= '$id',image= '$photo',categories='$categories',souscategories='$souscategories',dateajout='$date' WHERE nomproduit = '$titre3'");
@@ -130,7 +130,7 @@ date_default_timezone_set('europe/paris');
 								
 								}
 							  ?>
-							  	  <form method="post">
+							  	  <form method="post" action="boutique.php">
 								  				<label>Recherche Articles</label></br>
 							                    <input type="text" name="titre3" required></br>
 							                    <label>Modifier Articles</label></br>
@@ -161,7 +161,7 @@ date_default_timezone_set('europe/paris');
 				   										}						   	
 							   }
 							   ?>
-							    <form method="post">
+							    <form method="post" action="boutique.php">
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre4" required></br>
 							                    <input type="submit" value="effacer" name="effacer"></br>

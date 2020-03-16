@@ -7,20 +7,26 @@
 ?>	
  			<h1>Votre panier</h1>
   				<?php
- 						
+ 					
 								$test=new Panier();
 								$id_utilisateurs=$_SESSION['login'];
-    							$j=0;
-            					foreach ($test->creationPanier($id_utilisateurs) as $values)
-								{
-								// var_dump($test->creationPanier($id_utilisateurs));
+								$id=$_GET['id'];
+    							
+            							foreach ($test->creationPanier($id_utilisateurs) as $values)
+										{
+								//var_dump($test->creationPanier($id_utilisateurs));
 
 						        if (empty($test->creationPanier($id_utilisateurs))) {
-						        echo "<tr><td>Votre panier est vide </tr>";
-						    	 } 
+						        echo "<td><td>Votre panier est vide </td>";
+						    	 }
+						    	 
 						        else {
+						   			if (isset()) {
+						   				# code...
+						   			}
 						            $total = $values[7] * $values[1];
-									echo "<table width=200px>";
+						           	
+									echo "<table width=250px>";
 									echo "<tr>";
 									echo "<th>Nom produit</th>";
 									echo "<th>Prix</th>";
@@ -40,24 +46,27 @@
 									echo "<td>".$values[4]."</td>";
 									echo "<td>".$values[5]."</td>";
 									echo "<td>".$values[6]."</td>";
+									echo "<td><input method=\"post\"type=\"submit\" value=\"+\"/></td>";
 									echo "<td>".$values[7]."</td>";
+									echo "<td><input method=\"post\"type=\"submit\" value=\"-\"/></td>";
 									echo "<td>".$total."</td>";
-									echo "</tr>";
-									echo "<tr><td colspan=\"2\"> </td>";
-            						echo "<td colspan=\"2\">";
-            						echo "</td></tr>";
-           							echo "<tr><td colspan=\"4\">";
-           							echo "<input type=\"submit\" value=\"Rafraichir\"/>";
-           							echo "<input type=\"hidden\" name=\"action\" value=\"verrou\"/>";					
+           							echo "<input type=\"hidden\" name=\"action\" value=\"verrou\"/>";
+           								echo "</tr>";
 									echo "<table>";
-    							$j +=1;
+    							
   
     								}
-    							
-    						
-    				}
-    					
+    							}
+
+$values=
+								
+
+
+
 ?>
+
+
+
 
 
 
