@@ -17,15 +17,14 @@
 								//var_dump($test->creationPanier($id_utilisateurs));
 
 						        if (empty($test->creationPanier($id_utilisateurs))) {
-						        echo "<td><td>Votre panier est vide </td>";
+						        echo "<td>Votre panier est vide</td>";
 						    	 }
 						    	 
 						        else {
-						   			if (isset()) {
-						   				# code...
-						   			}
+						   			
+						   			//$qts=$values[] * $values[];
 						            $total = $values[7] * $values[1];
-						           	
+						           
 									echo "<table width=250px>";
 									echo "<tr>";
 									echo "<th>Nom produit</th>";
@@ -47,22 +46,17 @@
 									echo "<td>".$values[5]."</td>";
 									echo "<td>".$values[6]."</td>";
 									echo "<td><input method=\"post\"type=\"submit\" value=\"+\"/></td>";
-									echo "<td>".$values[7]."</td>";
+									echo "<td>".$qts."</td>";
 									echo "<td><input method=\"post\"type=\"submit\" value=\"-\"/></td>";
 									echo "<td>".$total."</td>";
            							echo "<input type=\"hidden\" name=\"action\" value=\"verrou\"/>";
            								echo "</tr>";
 									echo "<table>";
+								}
+							}
     							
-  
-    								}
-    							}
-
-$values=
-								
-
-
-
+    							
+    						
 ?>
 
 
