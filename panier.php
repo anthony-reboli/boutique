@@ -1,10 +1,19 @@
-
 <?php
-		 session_start();
-		 include("bar-nav.php");
-		 include("classpanier.php");
+session_start();
+ include("bar-nav.php");
+ include("classpanier.php");
  	
-?>	
+?>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="boutique.css">
+	<title></title>
+</head>
+<body>
+
+
  			<h1>Votre panier</h1>
   				<?php
  					
@@ -21,9 +30,9 @@
 						    	 }
 						    	 
 						        else {
-						   			
-						   			//$qts=$values[] * $values[];
+						        	$value = $values++;
 						            $total = $values[7] * $values[1];
+						            
 						           
 									echo "<table width=250px>";
 									echo "<tr>";
@@ -45,23 +54,22 @@
 									echo "<td>".$values[4]."</td>";
 									echo "<td>".$values[5]."</td>";
 									echo "<td>".$values[6]."</td>";
-									echo "<td><input method=\"post\"type=\"submit\" value=\"+\"/></td>";
-									echo "<td>".$qts."</td>";
-									echo "<td><input method=\"post\"type=\"submit\" value=\"-\"/></td>";
+									echo "<td><form method=\"post\"><input type=\"submit\" name=\"plus\" value=\"+\"/>";
+									echo "".$value[7]."";
+									var_dump($value[7]);
+									echo "<input type=\"submit\" name=\"moins\" value=\"-\"/></form></td>";
 									echo "<td>".$total."</td>";
-           							echo "<input type=\"hidden\" name=\"action\" value=\"verrou\"/>";
-           								echo "</tr>";
+           							//echo "<input type=\"submit\" name=\"action\" value=\"refresh\"/>";
+           							echo "</tr>";
 									echo "<table>";
-								}
+
 							}
-    							
-    							
-    						
-?>
+							}
+							  						
+			?>
 
-
-
-
+	</body>
+</html>
 
 
 
