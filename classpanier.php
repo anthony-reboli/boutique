@@ -11,21 +11,16 @@ class Panier
  
     public function creationPanier($id_utilisateurs)
     {
-      $id=$_GET['id'];
-      $id_utilisateurs=$_SESSION['login'];
+
+      //$id=$_GET['id'];      
+      $id_utilisateurs=$_SESSION['id'];
       $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-      $reponse = $connexion->query( "SELECT nomproduit,prixproduit,description,image,categories,souscategories,dateajout,quantiteproduit,prix_total FROM produits INNER JOIN panier WHERE produits.id_utilisateurs='$id'");
+      $reponse = $connexion->query( "SELECT nomproduit,prixproduit,description,image,categories,souscategories,dateajout,quantiteproduit,prix_total FROM produits INNER JOIN panier WHERE produits.id_utilisateurs=$id_utilisateurs");
                 
                 $test = $reponse->fetchAll();
 
             return $test;
-          }
-
-
-
-
-
-
+    }
 
 
    public function MontantGlobal($quantiteproduit,$id_produit,$prix_total)

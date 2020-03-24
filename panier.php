@@ -1,8 +1,7 @@
 <?php
 session_start();
  include("bar-nav.php");
- include("classpanier.php");
- 	
+ include("classpanier.php");	
 ?>
 
 <html>
@@ -18,8 +17,8 @@ session_start();
   				<?php
  					
 								$test=new Panier();
-								$id_utilisateurs=$_SESSION['login'];
-								$id=$_GET['id'];
+								$id_utilisateurs=$_SESSION['id'];
+								$id = $_GET['id'];
     							
             							foreach ($test->creationPanier($id_utilisateurs) as $values)
 										{
@@ -30,7 +29,7 @@ session_start();
 						    	 }
 						    	 
 						        else {
-						        	$value = $values++;
+						        	$i=0;
 						            $total = $values[7] * $values[1];
 						            
 						           
@@ -43,7 +42,7 @@ session_start();
 									echo "<th>Catégories</th>";
 									echo "<th>Sous Catégories</th>";
 									echo "<th>Date de la commande</th>";
-									echo "<th>Quantité du produits</th>";
+								
 									echo "<th>Prix total</th>";
 									echo "</tr>";
 									echo "<tr>";
@@ -54,17 +53,52 @@ session_start();
 									echo "<td>".$values[4]."</td>";
 									echo "<td>".$values[5]."</td>";
 									echo "<td>".$values[6]."</td>";
-									echo "<td><form method=\"post\"><input type=\"submit\" name=\"plus\" value=\"+\"/>";
-									echo "".$value[7]."";
-									var_dump($value[7]);
-									echo "<input type=\"submit\" name=\"moins\" value=\"-\"/></form></td>";
 									echo "<td>".$total."</td>";
-           							//echo "<input type=\"submit\" name=\"action\" value=\"refresh\"/>";
-           							echo "</tr>";
+									echo "</tr>";
 									echo "<table>";
+									$i += 1;
+										}
+									}
 
-							}
-							}
+				
+					$connexion = mysqli_connect("localhost","root","","boutique");
+					//var_dump($connexion);
+					$count="SELECT COUNT(*) FROM panier WHERE id_produits=$id AND quantiteproduit = 1";
+				 	$countquery=mysqli_query($connexion,$count);
+				 	$resultatplus= mysqli_fetch_all($countquery);
+				 	//echo $resultatplus;
+				 	var_dump($resultatplus);
+
+				 	$connexion2 = mysqli_connect("localhost","root","","boutique");	
+				 	$count2="SELECT COUNT(*) FROM panier WHERE id_produits=$id AND quantiteproduit = -1" ;
+
+				 	$countquery2=mysqli_query($connexion2,$count2);
+				 	//var_dump($countquery2);
+				 	$resultatmoins= mysqli_fetch_all($countquery2);	
+				 	?>
+
+				 	<form method='POST' action="panier.php?id=<?php echo $id; ?>">
+					<label><?php echo $resultatplus[0][0] ?></label>
+					<button  name="plus<?php echo $i ?>"></button><br />
+					<label><?php echo $resultatmoins[0][0] ?></label>
+					<button  name="moins<?php  echo $i ?>"></button><br />
+					</form>
+
+					<?php
+
+						if (isset($_POST['plus']))
+					  {
+
+					    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+					    $rep = $connexion->query('UPDATE panier SET quantiteproduit = 1 WHERE  id_produits=id_utilisateurs');
+					  }
+					    if (isset($_POST['moins']))
+					  {
+					  	$_POST['moins'] = addslashes($_POST['moins']);
+					    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+					    $rep2 = $connexion->query('UPDATE panier SET quantiteproduit = -1 WHERE id_produits=id_utilisateurs');
+					  }
+
 							  						
 			?>
 

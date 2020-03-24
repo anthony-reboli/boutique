@@ -24,7 +24,7 @@
 				$btplus = $_POST["plus$i"];
 				$plus = $values[2];
 				$moins= $values[3];
-				$update= "INSERT INTO panier (id_utilisateurs,plus,moin,id_produits,datepanier,prix_total) VALUES ($id_utilisateurs,1,0,$id_produits,$datepanier,$prix_total)";
+				$update= "INSERT INTO panier (id_utilisateurs,plus,moin,id_produits,datepanier,prix_total) VALUES ($id_utilisateurs,1,$id_produits,$datepanier,$prix_total)";
 				$query2=mysqli_query($connexion,$update);
 			
 			}
@@ -33,7 +33,7 @@
 				$plus = $values[2];
 				$moins= $values[3];
 				// var_dump($aime);
-				$updatepas= "UPDATE panier SET plus = 1 WHERE produit.id_utilisateurs=$id";
+				$updatepas= "UPDATE panier SET quantiteproduit = 1 WHERE produit.id_utilisateurs=$id";
 				$querypas=mysqli_query($connexion,$updatepas);
 				// var_dump($querypas);
 			}
@@ -56,27 +56,23 @@
 			{
 				$btmoins = $_POST["moins$i"];
 				$plus = $test[2];
-				$moins= $test[3];
+				
 				// var_dump($aime);
-				$updatepas= "INSERT INTO panier ( id_utilisateurs,plus,moins,id_produits,datepanier,prix_total) VALUES ($id_utilisateurs,-1, 0,$id_produits,datepanier,prix_total)";
+				$updatepas= "INSERT INTO panier ( id_utilisateurs,plus,id_produits,datepanier,prix_total) VALUES ($id_utilisateurs,-1,$id_produits,datepanier,prix_total)";
 				$querypas=mysqli_query($connexion,$updatepas);
 				// var_dump($querypas);
 			
 			}
 			elseif ( !empty($resultat) && $resultat[3] == 1 ) {
-				$btmoins = $_POST["jaimepas$i"];
+				$btmoins = $_POST["moins$i"];
 				$plus = $test[2];
-				$moins= $test[3];
 				// var_dump($aime);
-				$updatepas= "UPDATE panier SET aime = -1 WHERE produit.id_utilisateurs=$id";
+				$updatepas= "UPDATE panier SET quantiteproduit = -1 WHERE produit.id_utilisateurs=$id";
 				$querypas=mysqli_query($connexion,$updatepas);
 				// var_dump($querypas);
 			}
 		else
 			{
-
-				$plus = $test[2];
-				$moins= $test[3];
 				$updatepas2= "DELETE FROM panier WHERE produit.id_utilisateurs=$id";
 				$querypas2=mysqli_query($connexion,$updatepas2);
 				// var_dump($querypas2);
@@ -99,12 +95,13 @@
 
 }		
 ?>
+	<form method="post" action="panier.php">
 	<label><?php echo $resultataime[0][0] ?></label>
 	<button id="plus" name="plus<?php echo $i ?>"></button><br />
 	<label><?php echo $resultataime2[0][0] ?></label>
 	<button id="moins" name="moins<?php echo $i ?>"></button><br />
-					
-?>
+	</form>				
+
 
 
 

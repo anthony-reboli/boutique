@@ -27,9 +27,11 @@
 
    
     							$i += 1;
+
     							echo "</div>";
     
 							 }
+
 								
 
 								
@@ -38,3 +40,4 @@
 
 
 ?>
+<a href="panier.php?id=$id">Ajouter au panier</a>
