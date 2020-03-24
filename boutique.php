@@ -45,18 +45,19 @@
   				{
   					$bs=$_GET['bs'];
 
-  					echo "reste";
-  					  				$rechercheb= "SELECT * from produits where nomproduit = '$bs'";
-									var_dump($rechercheb);
+  					
+  					  				$rechercheb= "SELECT * FROM produits WHERE nomproduit LIKE '$bs'";
+									
 									$recherchebq= mysqli_query($bdd,$rechercheb);
 									$resultatb= mysqli_fetch_all($recherchebq);
-									var_dump($resultatb);
+
+									
   				
 
 
 					if (!empty($bs) and !empty($bs) == (isset($resultatb[0][1])))
 					{
-						echo "true";
+						
 
 						
 				foreach($resultatb as $data6)
@@ -70,7 +71,7 @@
 	  		$did=$data6[0];
 	  		$img=$data6[5];
 	  		$dnp=$data6[1];
-	  		var_dump($data6);
+	 
 	  	echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
@@ -127,6 +128,7 @@
 <?php
 $requete4="SELECT * from produits where categories = '1'";
 	 $query4=mysqli_query($bdd, $requete4);
+	 var_dump($requete4);
 
  				
 
@@ -168,7 +170,7 @@ $requete4="SELECT * from produits where categories = '1'";
 		{
 			$requete3="SELECT * from produits where categories = '1'";
 	 $query3=mysqli_query($bdd, $requete3);
-	 echo "theee";
+	 
 	
 	 
 while($data= mysqli_fetch_assoc($query3))
@@ -177,7 +179,7 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$did=$data['id'];
 	  		$img=$data['image'];
 	  		$dnp=$data['nomproduit'];
-	  		var_dump($data);
+	  		
 	  	echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
