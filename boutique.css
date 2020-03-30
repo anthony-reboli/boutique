@@ -103,14 +103,79 @@ ol{
 
 	}
 
+/*boutique*/
+#boutique{
+	margin:0;
+	padding: 0;
+	background-color: #EAEDED;
+	display: flex;
+	flex-direction: column;
 
-.thep{
-	border:solid 1px black;
-	height: 300px;
-	width: 300px;
 }
 
+/*.thep{
+    border: solid 1px black;
+    height: 300px;
+    width: 300px;
+    background-color: #d2d0d0;
+
+}*/
+
+.theb{
+ display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid 1px black;
+    height: 292px;
+    background-color: red;
+    margin-left: 38px;
+    width: 31%;
+    align-items: center;
+    margin-top: 31px;
+}
+
+#cont_b{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+#notreboutique{
+	min-height: 1000px;
+       display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#lab_b{
+		    	    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#form_b2{
+
+		    	    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#formulaire{
+
+	display: flex;
+    flex-direction: row;
+    
+    justify-content: space-around;
+
+}
+
+
+
 .imagebout{
-	height: 50px;
-	width: 50px;
+	height: 80px;
+	width: 80px;
 }

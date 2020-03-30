@@ -1,12 +1,12 @@
 <?php session_start();
-	var_dump($_POST);
+	
 ?>
 <html>
 <head>
 	<title>Boutique</title>
 	<link rel="stylesheet" href= "boutique.css">
 </head>
-<body>
+<body id="boutique">
 	<header>
 		<?php include("bar-nav.php");?>
 	</header>
@@ -16,6 +16,9 @@
 		?>
 
 		<!-- recherche -->
+		<section id="formulaire">
+		<div id="form-1">
+
 		<form name="recherche" method="get">
 			<label>RECHERCHER PAR NOM</label>
 			<br>
@@ -37,8 +40,16 @@
 
 		
 		<br>
-		<label for="categorie-select">Choisir la categorie:</label>
+		
+		
+
+
 </form>
+</div>
+
+
+
+
 <?php
 
   				if (isset($_GET['recheb']))
@@ -114,8 +125,12 @@
 
 
 
-
+<div id="form_b2">
 	<form name="form-bout"method="post" type="">
+		<br>
+		<label for="categorie-select">Choisir la categorie:</label>
+		<br>
+
 		<select name="pagear" id="categorie-select">
 			<option value="">--choisir une option--</option>
 			<option value="the">the</option>
@@ -128,12 +143,12 @@
 <?php
 $requete4="SELECT * from produits where categories = '1'";
 	 $query4=mysqli_query($bdd, $requete4);
-	 var_dump($requete4);
+	 
 
  				
 
 				 if(isset($_POST['catpage'])){ ?>
-					<select name="sc_b" id="categorie-select">
+					<select name="sc_b"  id="categorie-select">
 						
 						<?php if($_POST['pagear'] == 'the'){ ?>
 							
@@ -151,9 +166,17 @@ $requete4="SELECT * from produits where categories = '1'";
 <input type="submit" name="catpage">
 <br>
 </form>
+</div>
+	</div>
+</section>
+	<h1>Notre boutique</h1>
+<section id="notreboutique">
+	<br>
+<!-- <div id="cont_b"> -->
 
-<h1>Notre boutique</h1>
+
 <?php 
+
 // categoerie
 
  
@@ -180,7 +203,7 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$img=$data['image'];
 	  		$dnp=$data['nomproduit'];
 	  		
-	  	echo"<section class=\"thep\">";
+	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
 		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
@@ -191,7 +214,7 @@ while($data= mysqli_fetch_assoc($query3))
 		
 		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
-		echo"</section>";
+		//echo"</section>";
 		$i++;
 
 
@@ -204,7 +227,7 @@ while($data= mysqli_fetch_assoc($query3))
 		}
 
 
-		 		 	if ($_POST['pagear'] == 'the' && $_POST['sc_b'] == 'sachet')  // sous categorie sachet active
+		 		 	elseif ($_POST['pagear'] == 'the' && $_POST['sc_b'] == 'sachet')  // sous categorie sachet active
 		 	{
 		 		echo" passe alalala" ;
 		 
@@ -220,8 +243,8 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$did=$data['id'];
 	  		$img=$data['image'];
 	  		$dnp=$data['nomproduit'];
-	  		var_dump($data);
-	  	echo"<section class=\"thep\">";
+	  		
+	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
 		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
@@ -232,7 +255,7 @@ while($data= mysqli_fetch_assoc($query3))
 		
 		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
-		echo"</section>";
+		//echo"</section>";
 		$i++;
 
 
@@ -259,8 +282,8 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$did=$data['id'];
 	  		$img=$data['image'];
 	  		$dnp=$data['nomproduit'];
-	  		var_dump($data);
-	  	echo"<section class=\"thep\">";
+	  		
+	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
 		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
@@ -271,7 +294,7 @@ while($data= mysqli_fetch_assoc($query3))
 		
 		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
-		echo"</section>";
+		//echo"</section>";
 		$i++;
 
 
@@ -298,8 +321,8 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$did=$data['id'];
 	  		$img=$data['image'];
 	  		$dnp=$data['nomproduit'];
-	  		var_dump($data);
-	  	echo"<section class=\"thep\">";
+	  		
+	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
 		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
@@ -310,7 +333,7 @@ while($data= mysqli_fetch_assoc($query3))
 		
 		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
-		echo"</section>";
+		//echo"</section>";
 		$i++;
 
 
@@ -339,8 +362,8 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$did=$data2['id'];
 	  		$img=$data2['image'];
 	  		$dnp=$data2['nomproduit'];
-	  		var_dump($data2);
-	  	echo"<section class=\"thep\">";
+	  		
+	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
 		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
@@ -351,7 +374,7 @@ while($data= mysqli_fetch_assoc($query3))
 		
 		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
-		echo"</section>";
+		//echo"</section>";
 		$i++;
 
 
@@ -378,7 +401,7 @@ while($data= mysqli_fetch_assoc($query3))
 	  		$did=$data2['id'];
 	  		$img=$data2['image'];
 	  		$dnp=$data2['nomproduit'];
-	  		var_dump($data2);
+	  		
 	  	echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
@@ -410,26 +433,26 @@ while($data= mysqli_fetch_assoc($query3))
 
 		$requeteb="SELECT * from produits ";
 	 $queryb=mysqli_query($bdd, $requeteb);
-	 echo "acrako2";
+	
+	 // echo"<section class=\"thep\">";
 		while($data= mysqli_fetch_assoc($queryb))
 	  {
 	  		$i=0;
 	  		$did=$data['id'];
 	  		$img=$data['image'];
 	  		$dnp=$data['nomproduit'];
-	  		var_dump($data);
-	  	echo"<section class=\"thep\">";
+	  		
+	  	
 	  	echo" <div class=\"theb\">";
 		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
-		echo "<img class=\"imagebout\" src=\"upload/$img\">";
+		echo "<a href=\"profilitem.php?p=$did\">$dnp /";
+		echo "<img class=\"imagebout\" src=\"upload/$img\"></a>";
 		echo "<p>{$data['description']}</p>";
-		echo "<p>{$data['prixproduit']}</p>";
+		echo "<p>prix de vente:{$data['prixproduit']}€</p>";
 		
-		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+	
 		echo "</div>";
-		echo"</section>";
+		
 		$i++;
 
 
@@ -441,6 +464,7 @@ while($data= mysqli_fetch_assoc($query3))
 	  }
 	  
 	}
+	// echo"</section>";
 	// else{
 	// 	include('boutique2.php');
 	// }
@@ -478,7 +502,8 @@ while($data= mysqli_fetch_assoc($query3))
 
 
 
-	
+<!-- </div> -->
+</section>
 
 </body>
 </html>
