@@ -19,21 +19,21 @@ session_start();
 								$test=new Panier();
 								$id_utilisateurs=$_SESSION['id'];
 								//$id = $_GET['id'];
-    							$i=0;
+    					
             							foreach ($test->creationPanier($id_utilisateurs) as $values)
 										{
-								var_dump($test->creationPanier($id_utilisateurs));
+								//var_dump($test->creationPanier($id_utilisateurs));
 
 						        if (empty($test->creationPanier($id_utilisateurs))) {
 						        echo "<td>Votre panier est vide</td>";
 
 						    	 }
-						    	 
+						   
 						        else {
 						        	
-						        	
+						        	$i=1;   
 						            $total = $values[13] * $values[2];
-						            
+						         
 									echo "<table width=250px>";
 									echo "<tr>";
 									echo "<th>Nom produit</th>";
@@ -53,10 +53,9 @@ session_start();
 									echo "<td>".$total."</td>";
 									echo "</tr>";
 									echo "</table>";
-									echo "rentre";
 									 include("quantite.php");
-									
-									$i += 1;
+									$i++;
+											
 										}
 									}
 		  			
