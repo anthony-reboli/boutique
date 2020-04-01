@@ -85,11 +85,11 @@
 	 
 	  	echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"profilitem.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data6[3]}</p>";
-		echo "<p>{$data6[2]}</p>";
+		echo "<p class=\"p_b\">{$data6[3]}</p>";
+		echo "<p class=\"p_b\">{$data6[2]}</p>";
 		
 		
 		
@@ -205,14 +205,14 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data['description']}</p>";
-		echo "<p>{$data['prixproduit']}</p>";
+		echo "<p class=\"p_b\">{$data['description']}</p>";
+		echo "<p class=\"p_b\">{$data['prixproduit']}</p>";
 		
 		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "<form method=\"post\" \"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		//echo"</section>";
 		$i++;
@@ -246,14 +246,14 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data['description']}</p>";
-		echo "<p>{$data['prixproduit']}</p>";
+		echo "<p class=\"p_b\">{$data['description']}</p>";
+		echo "<p class=\"p_b\">{$data['prixproduit']}</p>";
 		
 		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "<form method=\"post\" \"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		//echo"</section>";
 		$i++;
@@ -285,14 +285,14 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data['description']}</p>";
-		echo "<p>{$data['prixproduit']}</p>";
+		echo "<p class=\"p_b\">{$data['description']}</p>";
+		echo "<p class=\"p_b\">{$data['prixproduit']}</p>";
 		
 		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "<form method=\"post\" \"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		//echo"</section>";
 		$i++;
@@ -324,14 +324,14 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data['description']}</p>";
-		echo "<p>{$data['prixproduit']}</p>";
+		echo "<p class=\"p_b\">{$data['description']}</p>";
+		echo "<p class=\"p_b\">{$data['prixproduit']}</p>";
 		
 		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "<form method=\"post\" \"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		//echo"</section>";
 		$i++;
@@ -365,14 +365,14 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	//echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data2['description']}</p>";
-		echo "<p>{$data2['prixproduit']}</p>";
+		echo "<p class=\"p_b\">{$data2['description']}</p>";
+		echo "<p class=\"p_b\">{$data2['prixproduit']}</p>";
 		
 		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "<form method=\"post\" \"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		//echo"</section>";
 		$i++;
@@ -404,14 +404,14 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	echo"<section class=\"thep\">";
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp</a> /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\">$dnp <br></a> /";
 		echo "<img class=\"imagebout\" src=\"upload/$img\">";
-		echo "<p>{$data2['description']}</p>";
-		echo "<p>{$data2['prixproduit']}</p>";
+		echo "<p class=\"p_b\">{$data2['description']}</p>";
+		echo "<p class=\"p_b\">{$data2['prixproduit']}</p>";
 		
 		
-		echo "<form method=\"post\" action=\"panier.php?id=$did\"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
+		echo "<form method=\"post\" \"><input type=\"submit\" name=\"boutiqueb[$i]\"></form>";
 		echo "</div>";
 		echo"</section>";
 		$i++;
@@ -444,11 +444,11 @@ while($data= mysqli_fetch_assoc($query3))
 	  		
 	  	
 	  	echo" <div class=\"theb\">";
-		// echo "<h1>{<a href =\"panier.php?id=$did\">$data['nomproduit']}</h1></a>";
-		echo "<a href=\"profilitem.php?p=$did\">$dnp /";
+		// echo "<h1>{<a href =\"produit.php?id=$did\">$data['nomproduit']}</h1></a>";
+		echo "<a href=\"produit.php?p=$did\"><h1 class=\"dnp\">$dnp </h1><br>";
 		echo "<img class=\"imagebout\" src=\"upload/$img\"></a>";
-		echo "<p>{$data['description']}</p>";
-		echo "<p>prix de vente:{$data['prixproduit']}€</p>";
+		echo "<p class=\"p_b\">{$data['description']}</p>";
+		echo "<p class=\"p_b\">prix de vente:{$data['prixproduit']}€</p>";
 		
 	
 		echo "</div>";
@@ -492,7 +492,7 @@ while($data= mysqli_fetch_assoc($query3))
 
 	<?php
 
-
+  include("pagination.php");
 	    
 
 	?>
