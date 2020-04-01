@@ -26,13 +26,13 @@
 			
 			}
 			else{
-				echo" ta greg";
+				echo"Veuillez choisir une quantité!";
 			}
 		}
 		if (isset($_POST["moins$i"])) 
 		{
 			
-			 if($values[13] != 0) //si il na pas fait de jaime
+			 if($values[13] += 0) //si il na pas fait de jaime
 			
 			{
 				echo "cobras";
@@ -47,13 +47,24 @@
 			
 			}
 			else{
-				echo" ta greg";
+				echo"veuillez choisir une quantité!";
 			}
 		}
+
+									if (isset($_POST['supprimer'])){
+									   
+									     
+									         supprimePanier();
+									      
+									   
+									}
+
+	
 		?>
 		<form method="post" action="panier.php">
 	<button id="plus" name="plus<?php echo $i ?>">+</button><br />
 	<button id="moins" name="moins<?php echo $i ?>">-</button><br />
+	<button id="supp" name="supprimer">Suppimer panier</button><br />
 	</form>	
 
 
