@@ -7,26 +7,25 @@ session_start();
 
  								
 								$id_utilisateurs=$_SESSION['id'];
-
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								$reponse = $connexion->query("SELECT * FROM produits INNER JOIN avis WHERE produits.id=$retour");
+								$reponse = $connexion->query("SELECT * FROM produits INNER JOIN  avis INNER JOIN panier WHERE produits.id=$retour");
 								$rep=$reponse->fetchAll();
 								//$rep= $connexion->query("SELECT * FROM produits INNER JOIN panier ");
       							//$tab = $rep->fetchAll();
       							var_dump($rep);
       						
       							$id_produits= $rep[0][0];
-      							$id_panier = $rep2[0][0];
       							$quantiteproduit = $rep[0][13];
       							$datepanier = $rep[0][8];
       							$prix_total = $rep[0][2];
+      							$id_panier = $rep[0][9];
 
 
-      							$connexion2=mysqli_connect("localhost","root","","boutique");
-      							$reponse2=("SELECT id FROM panier WHERE id_utilisateurs=$id_utilisateurs");
-      							$query2=mysqli_query($connexion2,$reponse2);
-      							$rep2=mysqli_fetch_all($query2);
-      							var_dump($rep2);
+      							//$connexion2=mysqli_connect("localhost","root","","boutique");
+      							//$reponse2=("SELECT id FROM panier WHERE id_utilisateurs=$id_utilisateurs");
+      							//$query2=mysqli_query($connexion2,$reponse2);
+      							//$rep2=mysqli_fetch_all($query2);
+      							//var_dump($rep2);
 
 
 
@@ -78,7 +77,7 @@ session_start();
 							
 							}
 							//var_dump($requete);
-							$id_panier = $rep2[0][0];
+							$id_panier = $rep[0][13];
 ?>
 
  <form  method="post" action="panier.php?id=<?php echo $id_panier?>">

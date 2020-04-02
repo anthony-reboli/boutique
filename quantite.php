@@ -1,11 +1,12 @@
 <?php
+	
+	
 
-		//$id=$_GET['id'];
-      	$id_utilisateurs=$_SESSION['login'];
+		
+
+      	$id_utilisateurs=$_SESSION['id'];
       	$connexion = mysqli_connect("localhost","root","","boutique");
-      	//var_dump($connexion);
-		//var_dump($test);
-		var_dump($values);
+      
 		echo "blablabla";
 
 		if (isset($_POST["plus$i"])) 
@@ -15,10 +16,12 @@
 			
 			{
 				echo "cobras";
+				
 				$btplus = $_POST["plus$i"];
 				$id_panier = $values[9];
+				$id_produits =  $values[12];
 				$prix_total= $total;
-				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit +1 WHERE panier.id = $id_panier");
+				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit +1 WHERE id = $id_panier AND id_produits= $id_produits AND id_utilisateurs= $id_utilisateurs");
 					var_dump($update);
 				$query2=mysqli_query($connexion,$update);
 				var_dump($query2);
@@ -29,6 +32,8 @@
 				echo"Veuillez choisir une quantité!";
 			}
 		}
+
+
 		if (isset($_POST["moins$i"])) 
 		{
 			
@@ -38,8 +43,9 @@
 				echo "cobras";
 				$btmoins = $_POST["moins$i"];
 				$id_panier = $values[9];
+				$id_produits =  $values[12];
 				$prix_total= $total;
-				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit -1 WHERE panier.id = $id_panier");
+				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit -1 WHERE id = $id_panier AND id_produits= $id_produits AND id_utilisateurs= $id_utilisateurs");
 					var_dump($update);
 				$query2=mysqli_query($connexion,$update);
 				var_dump($query2);
@@ -50,21 +56,13 @@
 				echo"veuillez choisir une quantité!";
 			}
 		}
-
-									if (isset($_POST['supprimer'])){
-									   
-									     
-									         supprimePanier();
-									      
-									   
-									}
-
 	
+
+	$id_produits =  $values[12];
 		?>
-		<form method="post" action="panier.php">
+	<form method="post" action="panier.php?id=<?php echo $id_produits?>">
 	<button id="plus" name="plus<?php echo $i ?>">+</button><br />
 	<button id="moins" name="moins<?php echo $i ?>">-</button><br />
-	<button id="supp" name="supprimer">Suppimer panier</button><br />
 	</form>	
 
 

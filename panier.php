@@ -15,17 +15,18 @@ session_start();
 
  			<h1>Votre panier</h1>
   				<?php
- 								if(isset($_GET['id'])){
- 									echo "bonjour";
+ 							
+
 
 								$test=new Panier();
 								$id_utilisateurs=$_SESSION['id'];
-								//$id = $_GET['id'];
-    					
-            							foreach ($test->creationPanier($id_utilisateurs) as $values)
-										{
-											echo "bonjour2";
-								var_dump($test->creationPanier($id_utilisateurs));
+								if(isset($_GET['id'])){
+ 									echo "bonjour";
+									
+	            				foreach ($test->creationPanier($id_utilisateurs) as $values)
+								{
+								echo "bonjour2";
+								//var_dump($test->creationPanier($id_utilisateurs));
 
 						        if (empty($test->creationPanier($id_utilisateurs))) {
 						        echo "<td>Votre panier est vide</td>";
@@ -40,7 +41,6 @@ session_start();
 									echo "<table width=250px>";
 									echo "<tr>";
 									echo "<th>Nom produit</th>";
-
 									echo "<th>Description</th>";
 									echo "<th>Image</th>";
 									echo "<th>Date de la commande</th>";

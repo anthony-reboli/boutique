@@ -25,12 +25,6 @@ date_default_timezone_set('europe/paris');
 
 
 
-				if (isset($_SESSION['login']) =='admin') {
-					$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-					$id = $_SESSION['id'];
-					$req = $connexion->query("SELECT * FROM produits WHERE id=$id ");
-					var_dump($req);
-}
 ?>
 
 <html lang="fr">
@@ -46,27 +40,41 @@ date_default_timezone_set('europe/paris');
 		<section>
 			<h1 class="titre">Nos Produits</h1>
 						<?php	
-														
+								if (isset($_SESSION['login']) =='admin') {
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								$reponse = $connexion->query( "SELECT *FROM produits INNER JOIN utilisateurs WHERE utilisateurs.id=produits.id");
-								var_dump($reponse);
-								$reponse2 = $connexion->query( "SELECT *FROM produits");
+								$id = $_SESSION['id'];
+								$req = $connexion->query("SELECT id FROM produits WHERE  id_utilisateurs=$id ");
+								$res =$req->fetchAll();
+								$id_produit=$res[0][0];
+								var_dump($res);
+								$req2 = $connexion->query("SELECT * FROM produits WHERE  produits.id_utilisateurs=$id ");
+								$res2 =$req2->fetchAll();
+								var_dump($res2);
+												
 								$i=0;
-								foreach ($reponse2 as list($id,$nomproduit,$prixproduit,$description,$user,$photo,$categories,$souscategories,$date)) {
+								foreach ($res2 as $values) {
 								if (isset($_SESSION['login'])=='admin') {
-								?>
-									
-									<p><?php echo $id?></p>
-									<a href="admin.php"><?php echo $nomproduit?></a> 
-									<p><?php echo $prixproduit?></p>
-									<p><?php echo $description?></p>
-									<p><?php echo $user?></p>
-									<p><?php echo "<img src=\"upload/$photo\">"?></p>
-									<p><?php echo $categories?></p>
-									<p><?php echo $souscategories?></p>
-									<p><?php echo $date?></p>
 								
-								<?php
+									
+									echo "<table border=solid width=250px>";
+									echo "<tr>";
+									echo "<th>Nom produit</th>";
+									echo "<th>Image</th>";
+									echo "<th>Description</th>";
+									echo "<th>Prix</th>";
+									echo "<th>Catégories</th>";
+									echo "<th>souscategories</th>";
+									echo "</tr>";
+									echo "<tr>";
+									echo "<td>".$values[1]."</td>";
+									echo "<td><img heigh=150px width=150px src=\"upload/".$values[5]."\"></td>";
+									echo "<td>".$values[3]."</td>";
+									echo "<td>".$values[2]."</td>";
+									echo "<td>".$values[6]."</td>";
+									echo "<td>".$values[7]."</td>";
+									echo "</tr>";
+									echo "</table>";
+								
 								$i++;
 									
 								}
@@ -86,15 +94,16 @@ date_default_timezone_set('europe/paris');
 									                $souscategories = $_POST['souscategories'];
 									                $id = $_SESSION['id'];
 									                $date= date("Y-m-d H:i:s");
-													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image,categories,souscategories,dateajout) VALUES ('$titre', '$prix', '$description', '$id', '$photo','$categories','$souscategories','".$date."')");
-													var_dump($requete);
+													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image,categories,souscategories) VALUES ('$titre', '$prix', '$description', '$id', '$photo','$categories','$souscategories')");
 													$requete->execute();
-													var_dump($connexion);
+													var_dump($requete);
+												
+															//var_dump($connexion);
 									}
 								
 								}
 							  ?>
-							  <form method="post" action="boutique.php">
+							  <form method="post" >
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre" required></br>
 							                    <label>Prix</label></br>
@@ -160,12 +169,17 @@ date_default_timezone_set('europe/paris');
 
 				   										}						   	
 							   }
+
 							   ?>
 							    <form method="post" action="boutique.php">
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre4" required></br>
 							                    <input type="submit" value="effacer" name="effacer"></br>
 							    </form>
+							<?php
+							}
+							?>
+
 
 						
 </section>
