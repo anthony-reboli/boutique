@@ -1,4 +1,5 @@
 <?php session_start();
+include("pagination.php");
 	
 ?>
 <html>
@@ -433,6 +434,7 @@ while($data= mysqli_fetch_assoc($query3))
 
 		$requeteb="SELECT * from produits ";
 	 $queryb=mysqli_query($bdd, $requeteb);
+
 	
 	 // echo"<section class=\"thep\">";
 		while($data= mysqli_fetch_assoc($queryb))
@@ -492,7 +494,7 @@ while($data= mysqli_fetch_assoc($query3))
 
 	<?php
 
-  include("pagination.php");
+   
 	    
 
 	?>
