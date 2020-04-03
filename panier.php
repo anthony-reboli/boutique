@@ -19,10 +19,11 @@ session_start();
 
 
 								$test=new Panier();
+								//var_dump($test);
 								$id_utilisateurs=$_SESSION['id'];
 								if(isset($_GET['id'])){
  									echo "bonjour";
-									
+								
 	            				foreach ($test->creationPanier($id_utilisateurs) as $values)
 								{
 								echo "bonjour2";
@@ -34,9 +35,12 @@ session_start();
 						    	 }
 						   
 						        else {
+						        	//var_dump($test);
+						      
+						   
 						        	
-						        	$i=1;   
-						            $total = $values[13] * $values[2];
+						        	$i=0;   
+						            $total = $values[3] * $values[8];
 						         
 									echo "<table width=250px>";
 									echo "<tr>";
@@ -48,24 +52,22 @@ session_start();
 									echo "<th>Prix total</th>";
 									echo "</tr>";
 									echo "<tr>";
-									echo "<td>".$values[1]."</td>";
-									echo "<td>".$values[3]."</td>";
-									echo "<td><img heigh=150px width=150px src=\"upload/".$values[5]."\"></td>";
-									echo "<td>".$values[14]."</td>";
-									echo "<td>".$values[2]."</td>";
+									echo "<td>".$values[7]."</td>";
+									echo "<td>".$values[9]."</td>";
+									echo "<td><img heigh=150px width=150px src=\"upload/".$values[10]."\"></td>";
+									echo "<td>".$values[13]."</td>";
+									echo "<td>".$values[8]."</td>";
 									echo "<td>".$total."</td>";
 									echo "</tr>";
 									echo "</table>";
-									 include("quantite.php");
-									$i++;
-											
-										}
+									
+									
+											 include("quantite.php");
+
+										
 									}
 
 									}
-									else
-									{
-									echo "rentrepas";	
 									}
 
 
