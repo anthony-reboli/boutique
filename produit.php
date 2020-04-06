@@ -8,36 +8,30 @@ session_start();
  								
 								$id_utilisateurs=$_SESSION['id'];
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								$reponse = $connexion->query("SELECT * FROM produits INNER JOIN  avis INNER JOIN panier WHERE produits.id=$retour");
+								$reponse = $connexion->query("SELECT * FROM produits INNER JOIN  avis  INNER JOIN commande WHERE produits.id=$retour");
 								$rep=$reponse->fetchAll();
-								//$rep= $connexion->query("SELECT * FROM produits INNER JOIN panier ");
-      							//$tab = $rep->fetchAll();
-      							var_dump($rep);
+							
+      							//var_dump($rep);
       						
       							$id_produits= $rep[0][0];
       							$quantiteproduit = $rep[0][13];
       							$datepanier = $rep[0][8];
       							$prix_total = $rep[0][2];
       							$id_panier = $rep[0][9];
+      							$id_commande=$rep[0][12];
 
 
-      							//$connexion2=mysqli_connect("localhost","root","","boutique");
-      							//$reponse2=("SELECT id FROM panier WHERE id_utilisateurs=$id_utilisateurs");
-      							//$query2=mysqli_query($connexion2,$reponse2);
-      							//$rep2=mysqli_fetch_all($query2);
-      							//var_dump($rep2);
-
-
-
-
+      
 
       							if (isset($_GET['p'])) {
+      								echo "coucou";
       							
 								$i = 0;
-								foreach ($reponse as $values){
+								foreach ($rep as $val){
+									var_dump($val);
 
 
-									if (!empty($values)) 
+									if (isset($val)) 
 								{
 									echo "<table width=250px>";
 									echo "<tr>";
@@ -48,11 +42,11 @@ session_start();
 									echo "<th>Prix</th>";
 									echo "</tr>";
 									echo "<tr>";
-									echo "<td>".$values[1]."</td>";
-									echo "<td>".$values[3]."</td>";
-									echo "<td><img heigh=150px width=150px src=\"upload/".$values[5]."\"></td>";
-									echo "<td>".$values[8]."</td>";
-									echo "<td>".$values[2]."</td>";
+									echo "<td>".$val[1]."</td>";
+									echo "<td>".$val[3]."</td>";
+									echo "<td><img heigh=150px width=150px src=\"upload/".$val[4]."\"></td>";
+									echo "<td>".$val[7]."</td>";
+									echo "<td>".$val[2]."</td>";
 									echo "</tr>";
 									echo "</table>";
 									$i ++;
@@ -62,22 +56,33 @@ session_start();
 									echo "Veuillez choisir un produit!";
     								}
     							}
-    						}
+    						
     					
     						
     					
     					
 	
-    					if (isset($_POST['ajout'])) {
-    							$connexion2=mysqli_connect("localhost","root","","boutique");
-    							$requete=("INSERT INTO panier (id_utilisateurs,id_produits,quantiteproduit,prix_total) VALUES ('$id_utilisateurs','$id_produits',1,'$prix_total')");
-    							$query=mysqli_query($connexion2,$requete);
+    					if (empty($_POST['ajout'])) {
+    							echo "ca va";
+
     							
-    							var_dump($requete);
+    							$requete=$connexion->query("SELECT * from commande WHERE id=$id_commande");
+    							$rep2=$requete->fetchAll();
+    							var_dump($rep2);
+    							$connexion=mysqli_connect("localhost","root","","boutique");
+    							$req="INSERT INTO panier(id_utilisateur,id_produit,quantiteproduit,datepanier,prixtotal) VALUES ('$id_utilisateurs','$id_produits','$quantiteproduit',NOW(),'$prix_total')";
+    							$query=mysqli_query($connexion,$req);
+
+    						
+    							var_dump($query);
+    							//var_dump($requete2);
+    							
+    							//var_dump($requete);
 							
 							}
+						}
 							//var_dump($requete);
-							$id_panier = $rep[0][13];
+							$id_panier = $rep[0][9];
 ?>
 
  <form  method="post" action="panier.php?id=<?php echo $id_panier?>">

@@ -12,19 +12,18 @@
 		if (isset($_POST["plus$i"])) 
 		{
 			
-			 if($values[3] += 0) //si il na pas fait de jaime
+			 if($values[5] += 0) 
 			
 			{
 				echo "cobras";
 				
 				$btplus = $_POST["plus$i"];
-				$id_panier = $values[0];
-				var_dump($id_panier);
-				$id_produits =  $values[2];
-				$prix_total= $total;
-				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit +1 WHERE id = $id_panier AND id_produits= $id_produits AND id_utilisateurs= $id_utilisateurs");
+				$id_produits=$values[9];
+				
+				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit +1 WHERE  id_produit = $id_produits AND id_utilisateur= ".$_SESSION['id']."" );
 					var_dump($update);
 				$query2=mysqli_query($connexion,$update);
+				//header("Location:quantite.php"); 
 				var_dump($query2);
 				
 			
@@ -35,21 +34,21 @@
 		}
 
 
-		if (isset($_POST["moins[$i]"])) 
+		if (isset($_POST["moins$i"])) 
 		{
 			
-			 if($values[3] += 0) //si il na pas fait de jaime
+			 if($values[5] += 0) //si quantite 
 			
 			{
 				echo "cobras";
 				$btmoins = $_POST["moins$i"];
-				$id_panier = $values[0];
-				$id_produits =  $values[2];
-				$prix_total= $total;
-				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit -1 WHERE id = $id_panier AND id_produits= $id_produits AND id_utilisateurs= $id_utilisateurs");
+				$id_produits=$values[9];
+				
+				$update= ("UPDATE panier SET quantiteproduit = quantiteproduit -1  WHERE  id_produit=$id_produits AND id_utilisateur= ".$_SESSION['id']." ");
 					var_dump($update);
 				$query2=mysqli_query($connexion,$update);
-				//var_dump($query2);
+				//header("Location:quantite.php"); 
+				var_dump($query2);
 				
 			
 			}
@@ -61,10 +60,12 @@
 
 	 
 		?>
-	<form method="post" action="panier.php?id=<?php echo $id?>">
+		<form method="post" action="panier.php?id=<?php echo $id?>">
 	<button id="plus" name="plus<?php echo $i ?>">+</button><br />
 	<button id="moins" name="moins<?php echo $i ?>">-</button><br />
 	</form>	
+	
+	
 	
 
 
