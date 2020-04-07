@@ -1,20 +1,14 @@
 <html>
- <?php session_start(); ?>
 <head>
     <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="forum.css">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="camping.css">
     <title>Profil</title>
 </head>
-<header class="header">
-   <?php 
-    include("bar-nav.php");
-    ?>
-  </header>
-<body class="bodyf">
+<body class="bodyc">
 
   <?php
-  // include("bar-nav.php");
+  session_start();
+  include("bar-nav.php");
   if (isset($_SESSION['login']))
   {
     $connexion = mysqli_connect("localhost","root","","boutique");
@@ -22,60 +16,38 @@
     $requete = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
     $req = mysqli_query($connexion, $requete);
     $data = mysqli_fetch_assoc($req);
-    
-
-    $requete3="SELECT * FROM utilisateurs inner join avis WHERE avis.id_utilsateurs= ".$data['id']."  and login='".$_SESSION['login']."' ORDER BY date DESC LIMIT 1 ";
-    $query3= mysqli_query($connexion,$requete3);
-    $resultat3=mysqli_fetch_assoc($query3);
-    
+    var_dump($data);
   ?>
-    <section id="container1">
+    <section id="connexion">
         
-      
-        <?php
-      $LoginS= $_SESSION['login']; 
-      ?>
-
-        <div id="H1prof">
-        <h1 id="h1pro">Profil de <?php echo $LoginS ?></h1>
-      </div>
-      <article id='profc'>
-        <div id="main">
-
-            <h3 id="H3prof">changement de mot de passe et pseudo</h3>
-            <form name="loginform" id="loginform" action="#" method="post" enctype="multipart/form-data" class="wpl-track-me"> 
+      <div id="main" class="container">   
+            <form name="loginform" id="loginform" action="#" method="post" class="wpl-track-me"> 
                 <p class="login-username">
-                    <label class="profform" for="user_login">Username</label> 
+                    <label for="user_login">Username</label> 
                     <input type="text" id="user_login" class="input" placeholder="New Username" value="<?php echo $data['login']?>" size="20" name="login"/> 
                 </p> 
                 <p class="login-password"> 
-                    <label class="profform" for="user_pass">Password</label>
+                    <label for="user_pass">Password</label>
                     <input type="password" name="mdp" id="user_pass" class="input" placeholder="New Password" value="<?php echo $data['password']?>" size="20"/> 
-                </p>  
-
-                
-
-  
+                </p>    
 
                 <p class="login-submit"><input type="submit" name="Modifier" id="submit" class="button-primary" value="Modifier" />
                     <input type="hidden" name="redirect_to" value="#"/>
                 </p>  
            </form>
-           </div>
-           <div id="info-prof">
+
+         </div>
+         <div id="info-prof">
 
            
-          <p class="profform">login: <?php echo $resultat3['login']?></p>
-          <p class="profform">Nom: <?php echo $resultat3['nom']?></p>
-          <p class="profform">Prenom: <?php echo $resultat3['prenom']?></p>
-          <p class="profform">email: <?php echo $resultat3['email']?></p>
-          <p class="profform">dernier commentaire: <?php echo $resultat3['commentaires'] ?></p>
-          <p class="profform">dernier commentaire: <?php echo $resultat3['date']?></p>
+          
+          <p class="profform">Nom: <?php echo $data['nom']?></p>
+          <p class="profform">Prenom: <?php echo $data['prenom']?></p>
+          <p class="profform">Adress: <?php echo $data['adresse']?></p>
+          <p class="profform">Code Postale: <?php echo $data['codepostal']?></p>
+          <p class="profform">Email: <?php echo $data['email']?></p>
 
       </div>
-    </article>
-
-         
         
    </section>
   <?php
@@ -97,17 +69,15 @@
   {
   ?>
     <section id="notcon">
-      <p id="pascopro">Veuillez vous connecter pour accéder à votre page !</p>
+      <p>Veuillez vous connecter pour accéder à votre page !</p>
     </section>
         <?php
   }
   
-// include("footer.php");
+
 ?>
  
-          <footer id="footprof" class="footer">
-           <aside> Copyright 2020 Coding School | All Rights Reserved | Project by Anthony,Mohamed,Grégory. </aside>
-        </footer>
+  
 </body>
 </html>
 
