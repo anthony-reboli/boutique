@@ -1,26 +1,18 @@
 <?php
 
-class Panier 
-{
-    public $id_utilisateurs = '';
-    public $quantiteproduit = '';
-    public $id_produit = '';
-    public $id_panier = '';
-    public $prix_total = '';
+
    
  
-    public function creationPanier($id_utilisateurs)
-    {
+     function creationPanier($id_utilisateurs)
+    
 
       $id=$_GET['id'];      
       $id_utilisateurs=$_SESSION['id'];
       $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-      $rep= $connexion->query("SELECT * FROM panier   WHERE id_utilisateur = ".$_SESSION['id']."");
-      $tab = $rep->fetchAll();
-      $id_user=$tab[0][1];
-      $id_panier=$tab[0][0];
-      $id_produit=$tab[0][2];
-   // var_dump($tab);
+      $rep= $connexion->query("SELECT * FROM commande WHERE id_utilisateur = ".$_SESSION['id']."");
+      var_dump($rep);
+   
+    //var_dump($tab);
 
 
       
@@ -28,7 +20,7 @@ class Panier
       //var_dump($rep2);
       $tab = $rep->fetchAll();
        
-          $test = $rep2->fetchAll();
+          $test = $rep->fetchAll();
      
       
             return $test;
@@ -57,7 +49,7 @@ class Panier
 
 
  
-}
+
  
 
 ?>

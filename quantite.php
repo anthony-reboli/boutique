@@ -64,6 +64,7 @@
 	<button id="plus" name="plus<?php echo $i ?>">+</button><br />
 	<button id="moins" name="moins<?php echo $i ?>">-</button><br />
 	</form>	
+
 	
 	
 	
