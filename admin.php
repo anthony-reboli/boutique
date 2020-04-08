@@ -41,22 +41,20 @@ date_default_timezone_set('europe/paris');
 			<h1 class="titre">Nos Produits</h1>
 						<?php	
 								if (isset($_SESSION['login']) =='admin') {
+
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 								$id = $_SESSION['id'];
-								$req = $connexion->query("SELECT id FROM produits WHERE  id_utilisateurs=$id ");
+								$req = $connexion->query("SELECT * FROM produits ");
 								$res =$req->fetchAll();
 								$id_produit=$res[0][0];
 								var_dump($res);
-								$req2 = $connexion->query("SELECT * FROM produits WHERE  produits.id_utilisateurs=$id ");
-								$res2 =$req2->fetchAll();
-								var_dump($res2);
-												
-								$i=0;
-								foreach ($res2 as $values) {
-								if (isset($_SESSION['login'])=='admin') {
 								
+							
+								
+								foreach ($res as $values) {
+									$i=0;						
 									
-									echo "<table border=solid width=250px>";
+									echo "<table  width=250px>";
 									echo "<tr>";
 									echo "<th>Nom produit</th>";
 									echo "<th>Image</th>";
@@ -67,11 +65,11 @@ date_default_timezone_set('europe/paris');
 									echo "</tr>";
 									echo "<tr>";
 									echo "<td>".$values[1]."</td>";
-									echo "<td><img heigh=150px width=150px src=\"upload/".$values[5]."\"></td>";
+									echo "<td><img heigh=150px width=150px src=\"upload/".$values[4]."\"></td>";
 									echo "<td>".$values[3]."</td>";
 									echo "<td>".$values[2]."</td>";
+									echo "<td>".$values[5]."</td>";
 									echo "<td>".$values[6]."</td>";
-									echo "<td>".$values[7]."</td>";
 									echo "</tr>";
 									echo "</table>";
 								
@@ -80,11 +78,9 @@ date_default_timezone_set('europe/paris');
 								}
 								
 								}
-									
-								?>
-								<?php
-
+								
 								if (isset($_POST['valider'])) {
+
 									if (!empty($_POST['titre'])&& !empty($_POST['prix'])&& !empty($_POST['description'])&& !empty($_POST['photo'])&& !empty($_POST['souscategories'])) {
 													$titre = $_POST['titre'];
 									                $prix = $_POST['prix'];
@@ -92,9 +88,8 @@ date_default_timezone_set('europe/paris');
 									                $photo = $_POST['photo'];
 									                $categories = $_POST['categories'];
 									                $souscategories = $_POST['souscategories'];
-									                $id = $_SESSION['id'];
-									                $date= date("Y-m-d H:i:s");
-													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, id_utilisateurs, image,categories,souscategories) VALUES ('$titre', '$prix', '$description', '$id', '$photo','$categories','$souscategories')");
+									                $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, image,categories,souscategories) VALUES ('$titre', '$prix', '$description','$photo','$categories','$souscategories')");
 													$requete->execute();
 													var_dump($requete);
 												
@@ -118,6 +113,8 @@ date_default_timezone_set('europe/paris');
 							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="Envoyer" name="valider"></br>
 							   </form>
+
+							   
 							   	<?php
 
 								if (isset($_POST['modifier'])) {
@@ -169,6 +166,7 @@ date_default_timezone_set('europe/paris');
 
 				   										}						   	
 							   }
+		
 
 							   ?>
 							    <form method="post" action="boutique.php">
@@ -176,9 +174,7 @@ date_default_timezone_set('europe/paris');
 							                    <input type="text" name="titre4" required></br>
 							                    <input type="submit" value="effacer" name="effacer"></br>
 							    </form>
-							<?php
-							}
-							?>
+
 
 
 						
