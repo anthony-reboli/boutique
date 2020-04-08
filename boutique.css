@@ -104,11 +104,17 @@ ol{
 	}
 
 /*boutique*/
+
+#headB{
+	background-color: #d9e094;
+}
 #boutique{
 	margin:0;
 	padding: 0;
-	background-color: #EAEDED;
+	background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-tea-single-poster-background-material-image_146850.jpg);
 	display: flex;
+	background-repeat: no-repeat;
+	background-size: cover;
 	flex-direction: column;
 
 }
@@ -127,7 +133,7 @@ ol{
     justify-content: space-around;
     border: solid 1px black;
     height: 292px;
-    background-color: red;
+    background-color: #e7e8da4f;
     margin-left: 38px;
     width: 31%;
     align-items: center;
@@ -170,6 +176,7 @@ ol{
     flex-direction: row;
     
     justify-content: space-around;
+    background-color: #d9e094;
 
 }
 
@@ -178,4 +185,96 @@ ol{
 .imagebout{
 	height: 80px;
 	width: 80px;
+}
+
+.p_b{
+	color: black;
+    font-size: 16px;
+}
+
+.dnp{
+	    font-size: 18px;
+    font-family: cursive;
+}
+
+/*index*/
+#bodind{
+	background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-tea-single-poster-background-material-image_146850.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+#mainindex{
+display: flex;
+flex-direction: column;
+
+}
+.indexp{
+	background-color:blue;
+	height: 125px;
+	width: 125px; 
+	border:solid 1px;
+	border-color: black;
+}
+
+#newp{
+	display: flex;
+}
+
+#photorec{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 255px;
+    width: 100%;
+    display: flex;
+
+}
+#presentation{
+    background-color: #cddc3929;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 345px;
+    width: 100%;
+
+}
+
+.preind{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #cddc39c4;
+    align-items: center;
+
+}
+
+.blocI{
+	font-size: 20px;
+    height: 155px;
+    width: 402px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#h1I{
+	text-align: center;
+}
+
+.imagebout2{
+    height: 162px;
+    width: 162px;
+}
+
+.titreI{
+height: 7px;
+    width: 227px;
+}
+}
+
+footer{
+	min-width: 125px;
+	min-height: 125px;
+	background-color: #d9e094;
 }
