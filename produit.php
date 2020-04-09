@@ -20,15 +20,17 @@
 								$reponse = $connexion->query("SELECT * FROM produits  INNER JOIN  avis   on produits.id=$retour  where id_utilisateur=$id_utilisateurs");
 								$rep=$reponse->fetchAll();
 						
-      								if (!empty($_GET['p'])) 
-      								{
+      										if (!empty($_GET['p'])) 
+      										{
 
 													$i = 0;
 														foreach ($rep as $val)
 													{
 													
 															if (!empty($val)) 
+
 														{
+															
 															echo "<table width=300px>";
 															echo "<tr>";
 															echo "<th>Nom produit</th>";

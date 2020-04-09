@@ -20,8 +20,8 @@ session_start();
 								$id_utilisateurs=$_SESSION['id'];
 								$rep= $connexion->query("SELECT * FROM commande INNER JOIN produits on commande.id_produit=produits.id  WHERE id_utilisateur = ".$_SESSION['id']."");
 								$test = $rep->fetchAll();
-								var_dump($test);
-								
+								//var_dump($test);
+								$i=0;
 	            				foreach ($test as $values)
 								{
 								echo "bonjour2";
@@ -29,12 +29,12 @@ session_start();
 								
 						        		if (!empty($values)) {
 						        			
-									        	//var_dump($values);
+									        	var_dump($values);
 									      
 									   			if(isset($_GET['id'])){
 			 									echo "bonjour";
 			 										
-							 									$i=0;
+							 									
 													          
 																echo "<table width=250px>";
 																echo "<tr>";
@@ -52,7 +52,7 @@ session_start();
 																echo "</table>";
 														   			include("quantite.php");
 																	
-																 $i++;
+																 $i=+1;
 																  
 																	
 															}
@@ -62,18 +62,52 @@ session_start();
 											}
 
 										}
+										 
 									}
 									
-									  $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								  $req=$connexion->query("SELECT SUM(prixglobal) FROM `commande` WHERE id_utilisateur=$id_utilisateurs");
-													   			$total = $req->fetchAll();
-													   			var_dump($total);
+								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+								$req=$connexion->query("SELECT SUM(prixglobal) FROM `commande` WHERE id_utilisateur=$id_utilisateurs");
+									$total = $req->fetchAll();
+													   			//var_dump($total);
+									?>
+									<p>Le montant total est : <?php echo "".$total[0][0].""?>€</p>
+									<?php
+
+								if (isset($_POST['ajoutpanier'])) {
+
+									$connexion=mysqli_connect("localhost","root","","boutique");
+									$id_utilisateurs=$values[1];
+									$id_produits=$values[2];
+									$prixtotal=$total[0][0];
+									$req="INSERT INTO panier (id_utilisateur,id_produit,datepanier,prixtotal) VALUES ('$id_utilisateurs','$id_produits',NOW(),'$prixtotal')";
+
+									$query=mysqli_query($connexion,$req);
+									?>	
+									<a href="paiement.php">Payer</a>
+									<?php
+
+									var_dump($query);	
+									
+									}
+														
 							?>
 			
-							<p>Le montant total est : <?php echo "".$total[0][0].""?>€</p>
+							<form method="post">
+								<input type="submit" name="ajoutpanier"/>
+							</form>
+							
+						
+
 	
 			</body>
 </html>
+
+
+
+								
+							
+							
+
 
 
 

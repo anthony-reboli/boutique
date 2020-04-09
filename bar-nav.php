@@ -1,7 +1,6 @@
-  <?php
-  
-    $id=$_SESSION['id'];
 
+
+  <?php
     if (isset($_SESSION['login'])==false)
     {
     ?>
@@ -9,15 +8,10 @@
 
   <nav class="menu">
   <ol>
- 
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="boutique.php">Boutique</a></li>
-            <li><a href="panier.php?id=<?php echo $id;?>">Panier</a></li>
-            <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="connexion.php">Connexion</a></li>
-        </ul>
-
+    <li class="menu-item"><a href="index.php">Home</a></li>
+    <li class="menu-item"><a href="boutique.php">boutique</a></li>
+    <li class="menu-item"><a href="connexion.php">Connexion</a></li>
+    <li class="menu-item"><a href="inscription.php">Inscription</a></li>
   </ol>
    
   
@@ -26,40 +20,58 @@
     
      <?php
     }
-     elseif(isset($_SESSION['login'])=='admin')
+     elseif(isset($_SESSION['login']) AND $_SESSION['login'] =='admin')
 
     {
        
     ?>
     <nav class="menu">
       <ol>
-      	<li><a href="index.php">Accueil</a></li>
-            <li><a href="boutique.php">Boutique</a></li>
-            <li><a href="panier.php?id=<?php echo $id;?>">Panier</a></li>
-            <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="admin.php">Espace Administrateur</a></li>
-            <li><a href="admin.php?deconnexion=true">Déconnexion</a>
+      
+        <li class="menu-item"><a href="index.php">Home</a></li>
+        <li class="menu-item"><a href="boutique.php">boutique</a></li>
+        <li class="menu-item"><a href="profil.php">profil</a></li>
+        <li class="menu-item"><a href="panier.php">panier</a></li>
+        <li class="menu-item"><a href="admin.php">Espace Admin</a></li>
+        <li class="menu-item"><a href="boutique.php?deconnexion=true">Déconnexion</a></li>
+        
       </ol>
         
       
     </nav>
  
      <?php
+   }
+   else(isset($_SESSION['login'])==true)
+   
+?>
+    <nav class="menu">
+      <ol>
+      
+        <li class="menu-item"><a href="index.php">Home</a></li>
+        <li class="menu-item"><a href="boutique.php">boutique</a></li>
+        <li class="menu-item"><a href="profil.php">profil</a></li>
+        <li class="menu-item"><a href="panier.php">panier</a></li>
+        <li class="menu-item"><a href="boutique.php?deconnexion=true">Déconnexion</a></li>
+        
+      </ol>
+        
+      
+    </nav>
+
+   
+   <?php
+
                 
                 if(isset($_GET['deconnexion']))
                 { 
                    if($_GET['deconnexion']==true)
                    {  
                       session_unset();
-                      header("location:index.php");
+                      header("location:connexion.php");
                    }
                 }
     
-    }
+    
              
     ?>
-
-
-        
-
-
