@@ -1,0 +1,159 @@
+/*barre nav*/
+a{
+	text-align:center;
+	text-decoration:none;
+}
+
+ol{
+	margin:0;padding:0;list-style-type:none
+	}
+
+
+.menu{
+	width:100%;
+	
+	display:block;
+	position:relative;
+	z-index: 60;
+	}
+
+.menu > ol:first-child{
+	width:100%;
+	display:flex;
+	position:relative;
+	flex-flow:row wrap;
+	justify-content:center
+	}
+
+.menu-item, .menu-itemc{
+	width:150px;
+	position:relative;
+	perspective:100%;
+	cursor:pointer
+	}
+
+.menu-item a, .menu-itemc a{
+	width:100%;
+	padding:16px 0;
+	display:block;
+	position:relative;
+	color:#fff;
+	border-radius:4px;
+	transition:all .5s ease;
+	transform-style:preserve-3d
+	}
+
+.menu-item a:before, .menu-itemc a:before{
+	width:100%;
+	padding:16px 0;
+	display:block;
+	position:absolute;
+	color:#000;
+	border-radius:4px;
+	}
+
+.menu > ol:first-child > .menu-item{display:block}
+.menu > ol:first-child > .menu-itemc{display:block}
+
+.menu > ol:first-child > .menu-item > a
+	{background:#000;box-shadow:0 8px 6px -6px #595959}
+.menu > ol:first-child > .menu-itemc > a
+	{background:#000;box-shadow:0 8px 6px -6px #595959}
+
+
+
+.menu > ol:first-child > .menu-item > a:before
+	{background:white;bottom:90%;transform:rotateX(-90deg) translate3d(0,0,75px)}
+.menu > ol:first-child > .menu-itemc > a:before
+	{background:white;bottom:90%;transform:rotateX(-90deg) translate3d(0,0,75px)}
+.menu > ol:first-child > .menu-item:nth-of-type(1) > a:before{content:"Home"}
+.menu > ol:first-child > .menu-item:nth-of-type(2) > a:before{content:"Boutique"}
+.menu > ol:first-child > .menu-item:nth-of-type(3) > a:before{content:"panier"}
+.menu > ol:first-child > .menu-item:nth-of-type(4) > a:before{content:"Inscription"}
+
+
+.menu > ol:first-child > .menu-itemc:nth-of-type(3) > a:before{content:"Espace Administrateur"}
+
+.menu > ol:first-child > .menu-itemc:nth-of-type(4) > a:before{content:"Déconnexion"}
+
+.menu > ol:first-child > .menu-item:hover > a{transform:rotateX(90deg)}
+.menu > ol:first-child > .menu-itemc:hover > a{transform:rotateX(90deg)}
+
+
+
+@keyframes fadein-down{
+	from{display:none;opacity:0;transform:translateY(-10px)}
+	to{display:block;opacity:1;transform:translateY(0)}
+	}
+
+@media screen and (min-width:321px) and (max-width:799px){
+	.menu{width:320px;margin:auto}
+	}
+
+@media (max-width:799px){
+	.menu > ol:first-child > .menu-item{width:100%}
+	.menu > ol:first-child > .menu-item> a{box-shadow:none}
+	.menu > ol:first-child > .menu-itemc{width:100%}
+	.menu > ol:first-child > .menu-itemc > a{box-shadow:none}
+	
+	.menu > ol:first-child > .menu-item:nth-of-type(2) > a,
+	.menu > ol:first-child > .menu-item:nth-of-type(4) > a
+		{border:1px solid #fff;border-left:none;border-right:none}
+	
+
+	}
+/*PAGE ADMINISTRATEUR*/
+#pageadmin{
+	background-image: url('upload/infusions.jpg');
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	margin: 0px;
+	padding: 0px
+	
+}
+#formadmin{
+	background-color: #85c33d9c;
+	display: flex;
+	flex-direction: row;
+	justify-content:space-around;
+
+}
+.titre{
+	font-size: 40px;
+	text-align: center;
+}
+.form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: bold;
+}
+/*PAGE PRODUITS*/
+#pageproduit{
+	background-color: green;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	
+}
+#contenueproduit{
+	margin-left: 380px;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+
+	
+
+}
+#qts{
+	margin-right: 450px;
+
+	
+}
+
+
+

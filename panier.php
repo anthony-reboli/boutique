@@ -50,13 +50,11 @@ session_start();
 																echo "<td>".$values[5]."€</td>";
 																echo "</tr>";
 																echo "</table>";
-																
-									
-																	 //include("quantite.php");
-																 $i++;
-																	//}
+														   			include("quantite.php");
 																	
-																
+																 $i++;
+																  
+																	
 															}
 											else
 											{
@@ -66,7 +64,7 @@ session_start();
 										}
 									}
 									
-
+									  $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 								  $req=$connexion->query("SELECT SUM(prixglobal) FROM `commande` WHERE id_utilisateur=$id_utilisateurs");
 													   			$total = $req->fetchAll();
 													   			var_dump($total);

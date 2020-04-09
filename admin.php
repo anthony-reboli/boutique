@@ -2,15 +2,14 @@
 <?php
 session_start();
 date_default_timezone_set('europe/paris');
-  include("bar-nav.php");
- 
-    if (isset($_SESSION['login'])==false)
-    {
-       echo "<h3>Connectez vous et achetez maintenant";
-    }
-    elseif(isset($_SESSION['login'])==true)
 
-    {
+    	if (isset($_SESSION['login'])==false)
+    	{
+       echo "<h3>Connectez vous et achetez maintenant";
+    	}
+    	elseif(isset($_SESSION['login'])==true)
+
+    	{
        if($_SESSION['login'] =="admin")
        {
         $user = $_SESSION['login'];
@@ -21,10 +20,7 @@ date_default_timezone_set('europe/paris');
         $user = $_SESSION['login'];
             echo "<h3><b>Bonjour <u>$user,</u> vous êtes connecté vous pouvez achetez.</b></h3>"; 
        }
-    }
-
-
-
+    	}
 ?>
 
 <html lang="fr">
@@ -33,51 +29,16 @@ date_default_timezone_set('europe/paris');
     <title>Espace Administrateur - Boutique </title>
     <link rel="stylesheet" href="boutique.css">
 </head>
-<body>
+<body id="pageadmin">
 <header>
-
+<?php
+include("bar-nav.php");?>
 </header>
-		<section>
-			<h1 class="titre">Nos Produits</h1>
+<h1 class="titre">Nos Produits</h1>
+		<section id="formadmin">
+						<div class="form">
 						<?php	
-								if (isset($_SESSION['login']) =='admin') {
-
-								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								$id = $_SESSION['id'];
-								$req = $connexion->query("SELECT * FROM produits ");
-								$res =$req->fetchAll();
-								$id_produit=$res[0][0];
-								var_dump($res);
-								
 							
-								
-								foreach ($res as $values) {
-									$i=0;						
-									
-									echo "<table  width=250px>";
-									echo "<tr>";
-									echo "<th>Nom produit</th>";
-									echo "<th>Image</th>";
-									echo "<th>Description</th>";
-									echo "<th>Prix</th>";
-									echo "<th>Catégories</th>";
-									echo "<th>souscategories</th>";
-									echo "</tr>";
-									echo "<tr>";
-									echo "<td>".$values[1]."</td>";
-									echo "<td><img heigh=150px width=150px src=\"upload/".$values[4]."\"></td>";
-									echo "<td>".$values[3]."</td>";
-									echo "<td>".$values[2]."</td>";
-									echo "<td>".$values[5]."</td>";
-									echo "<td>".$values[6]."</td>";
-									echo "</tr>";
-									echo "</table>";
-								
-								$i++;
-									
-								}
-								
-								}
 								
 								if (isset($_POST['valider'])) {
 
@@ -98,6 +59,7 @@ date_default_timezone_set('europe/paris');
 								
 								}
 							  ?>
+							  <p class="titre">Creer des Articles</p>
 							  <form method="post" >
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre" required></br>
@@ -113,30 +75,33 @@ date_default_timezone_set('europe/paris');
 							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="Envoyer" name="valider"></br>
 							   </form>
+							</div>
 
-							   
+							<div class="form">
 							   	<?php
 
 								if (isset($_POST['modifier'])) {
-									if (!empty($_POST['titre3'])&& !empty($_POST['titre2'])&& !empty($_POST['description'])&& !empty($_POST['photo'])) {
+									echo "string";
+									if (!empty($_POST['titre3']) && !empty($_POST['titre2']) && !empty($_POST['description']) && !empty($_POST['photo']) && !empty($_POST['categories']) && !empty($_POST['souscategories'])) {
+										echo "connexion";
 													$titre3 = $_POST['titre3'];
 													$titre2 =  $_POST['titre2'];
 									                $prix2 = $_POST['prix2'];
 									                $description = $_POST['description'];
 									                $photo = $_POST['photo'];
 									                $id = $_SESSION['id'];
-									                $date= date("Y-m-d");
 									                $categories = $_POST['categories'];
 									                $souscategories = $_POST['souscategories'];
-													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2',description= '$description', id_utilisateurs= '$id',image= '$photo',categories='$categories',souscategories='$souscategories',dateajout='$date' WHERE nomproduit = '$titre3'");
-													var_dump($requete2);
+													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2', description= '$description' ,image = '$photo' ,categories = '$categories' ,souscategories ='$souscategories' WHERE nomproduit = '$titre3'");
+													//var_dump($requete2);
 													$requete2->execute();
-													var_dump($connexion);
+													var_dump($requete2);
 									}
 								
 								}
 							  ?>
-							  	  <form method="post" action="boutique.php">
+							   <p class="titre">Modifier des Articles</p>
+							  	  <form method="post">
 								  				<label>Recherche Articles</label></br>
 							                    <input type="text" name="titre3" required></br>
 							                    <label>Modifier Articles</label></br>
@@ -153,7 +118,10 @@ date_default_timezone_set('europe/paris');
 							                    <input type="text" name="souscategories" required></br>
 							                    <input type="submit" value="modifier" name="modifier"></br>
 							      </form>
+							   </div>
+							   <div class="form">
 							   <?php
+
 							   if (isset($_POST['effacer'])) {
 							   		if (!empty($_POST['titre4']))
 											 			{
@@ -165,15 +133,16 @@ date_default_timezone_set('europe/paris');
 									        			
 
 				   										}						   	
-							   }
+							  					}	
 		
-
 							   ?>
-							    <form method="post" action="boutique.php">
+							    <p class="titre">Effacer des Articles</p>
+							    				<form method="post">
 							                    <label>Titre</label></br>
 							                    <input type="text" name="titre4" required></br>
 							                    <input type="submit" value="effacer" name="effacer"></br>
-							    </form>
+							    				</form>
+							    </div>
 
 
 
