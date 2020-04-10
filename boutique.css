@@ -67,7 +67,7 @@ ol{
 .menu > ol:first-child > .menu-itemc > a:before
 	{background:white;bottom:90%;transform:rotateX(-90deg) translate3d(0,0,75px)}
 .menu > ol:first-child > .menu-item:nth-of-type(1) > a:before{content:"Home"}
-.menu > ol:first-child > .menu-item:nth-of-type(2) > a:before{content:"Topics"}
+.menu > ol:first-child > .menu-item:nth-of-type(2) > a:before{content:"Boutique"}
 .menu > ol:first-child > .menu-item:nth-of-type(3) > a:before{content:"Connexion"}
 .menu > ol:first-child > .menu-item:nth-of-type(4) > a:before{content:"Inscription"}
 
@@ -183,9 +183,10 @@ ol{
 
 
 .imagebout{
-	height: 80px;
-	width: 80px;
+    height: 143px;
+    width: 162px;
 }
+
 
 .p_b{
 	color: black;
@@ -271,7 +272,67 @@ flex-direction: column;
 height: 7px;
     width: 227px;
 }
+
+/*profil.php*/
+
+.bodyc{
+	background-image: url(https://i.pinimg.com/originals/5a/11/c8/5a11c8f0175d4cc4763daf935d3ef60e.jpg);
+background-size: cover;
+background-repeat: no-repeat;
 }
+
+.imageavis{
+	height: 325px;
+	width: 325px;
+}
+
+
+#connexion{
+    border: solid 1px black;
+    height: 284px;
+    width: 957px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+
+}
+
+#commandepro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    min-height: 200px;
+}
+.theb2{
+ display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid 1px black;
+    height: 292px;
+    background-color: #e7e8da4f;
+    margin-left: 38px;
+    width: 31%;
+    align-items: center;
+    margin-top: 31px;
+}
+
+#mainprof{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.profform{
+	font-size: 25px; 
+}
+
 
 footer{
 	min-width: 125px;

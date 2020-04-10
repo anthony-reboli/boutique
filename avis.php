@@ -1,31 +1,19 @@
-<html>
-<head>
-    <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="boutique.css">
-    <title>avis d'article</title>
-</head>
-<body id="bodyav">
-	<header>
-  <?php
-  session_start();
+
+ <?php
   $connexion = mysqli_connect("localhost","root","","boutique");
   $requete = "SELECT id FROM utilisateurs WHERE login='".$_SESSION['login']."'";
-    $req = mysqli_query($connexion, $requete);
-    $data = mysqli_fetch_assoc($req);
+    $reqa = mysqli_query($connexion, $requete);
+    $data = mysqli_fetch_assoc($reqa);
     
-  	
-  	include("bar-nav.php");
   	?>
-  </header>
-  	<main id="mainavis">
-  		<h1>Poster votre avis</h1>
+  		<h1>Poster votre avis sur cette article</h1>
   		<div>
   			<?php
-  			$requete2="SELECT image FROM produits WHERE id = '".$_GET['id']."'";
-  			$query2=mysqli_query($connexion,$requete2);
-  			$res2=mysqli_fetch_assoc($query2);
+  			$requete2a="SELECT image FROM produits WHERE id = '".$_GET['id']."'";
+  			$query2a=mysqli_query($connexion,$requete2a);
+  			$res2a=mysqli_fetch_assoc($query2a);
   			
-  			$img=$res2['image'];
+  			$img=$res2a['image'];
   			echo "<img class=\"imageavis\" src=\"upload/$img\"></a>";
   			?>
   		</div>
@@ -42,12 +30,10 @@
 		<?php 
 		 if (isset($_POST['send']))
 		 {
-		 	$req1="INSERT into avis (id_utilisateur,id_produit,commentaires) VALUES ('".$data['id']."','".$_GET['id']."','".$_POST['avis']."')";
+		 	$req1a="INSERT into avis (id_utilisateur,id_produit,commentaires) VALUES ('".$data['id']."','".$_GET['id']."','".$_POST['avis']."')";
 
-		 	$query1= mysqli_query($connexion,$req1);
+		 	$query1a= mysqli_query($connexion,$req1a);
 
 		 }
 
 		?>
-  	</main>
-</body>
