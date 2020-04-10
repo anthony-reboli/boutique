@@ -67,11 +67,11 @@ ol{
 .menu > ol:first-child > .menu-itemc > a:before
 	{background:white;bottom:90%;transform:rotateX(-90deg) translate3d(0,0,75px)}
 .menu > ol:first-child > .menu-item:nth-of-type(1) > a:before{content:"Home"}
-.menu > ol:first-child > .menu-item:nth-of-type(2) > a:before{content:"Boutique"}
-.menu > ol:first-child > .menu-item:nth-of-type(3) > a:before{content:"profil"}
+.menu > ol:first-child > .menu-item:nth-of-type(2) > a:before{content:"Profil"}
+.menu > ol:first-child > .menu-item:nth-of-type(3) > a:before{content:"Boutique"}
 .menu > ol:first-child > .menu-item:nth-of-type(4) > a:before{content:"Panier"}
-.menu > ol:first-child > .menu-item:nth-of-type(5) > a:before{content:"Espace Administrateur"}
-.menu > ol:first-child > .menu-item:nth-of-type(6) > a:before{content:"Deconnexion"}
+.menu > ol:first-child > .menu-item:nth-of-type(5) > a:before{content:"Deconnexion"}
+.menu > ol:first-child > .menu-item:nth-of-type(6) > a:before{content:"Espace Admin"}
 .menu > ol:first-child > .menu-item:hover > a{transform:rotateX(90deg)}
 .menu > ol:first-child > .menu-itemc:hover > a{transform:rotateX(90deg)}
 
@@ -137,18 +137,32 @@ ol{
 	
 }
 #contenueproduit{
-	margin-left: 380px;
+	background-color: yellow;
 	display: flex;
 	flex-direction:column;
 	justify-content: center;
 
-	
 
 }
-#qts{
-	margin-right: 450px;
+#contenue{
+	background-color: pink;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: unset;
+}
 
+#qts{
+
+	border: unset;
 	
+}
+#avisprod{
+		background-color: pink;
+	display: flex;
+	justify-content:center;
+	align-items: center;
 }
 /*PAGE PANIER*/
 #pagepanier{
@@ -164,7 +178,7 @@ ol{
 }
 /*PAGE PAIEMENT*/
 #paiement{
-	background-color: pink;
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

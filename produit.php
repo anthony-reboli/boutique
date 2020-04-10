@@ -10,28 +10,27 @@
 				<header>
 				<?php	include("bar-nav.php");?>
 				</header>
-				<H1 class="titre">Ma Sélection</H1>
+							<H1 class="titre">Ma Sélection</H1>
 		
-					<section id="contenueproduit">
+					<section>
 								<?php
- 								$retour=$_GET['p'];
-								$id_utilisateurs=$_SESSION['id'];
+ 							
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-								$reponse = $connexion->query("SELECT * FROM produits  INNER JOIN  avis   on produits.id=$retour  where id_utilisateur=$id_utilisateurs");
+								$retour=$_GET['p'];
+								$id_utilisateurs=$_SESSION['id'];
+								//var_dump($id_utilisateurs);
+								$reponse = $connexion->query("SELECT * FROM produits WHERE produits.id=$retour ");
 								$rep=$reponse->fetchAll();
 						
       										if (!empty($_GET['p'])) 
       										{
-
 													$i = 0;
 														foreach ($rep as $val)
 													{
-													
 															if (!empty($val)) 
-
 														{
-															
-															echo "<table width=300px>";
+															echo "<div id='contenueproduit' >";
+															echo "<table id='contenue'>";
 															echo "<tr>";
 															echo "<th>Nom produit</th>";
 															echo "<th>Description</th>";
@@ -42,15 +41,15 @@
 															echo "<tr>";
 															echo "<td>".$val[1]."</td>";
 															echo "<td>".$val[3]."</td>";
-															echo "<td><img heigh=800px width=800px src=\"upload/".$val[4]."\"></td>";
+															echo "<td><img heigh=400px width=400px src=\"upload/".$val[4]."\"></td>";
 															echo "<td>".$val[2]."€</td>";
 															echo "</tr>";
 															echo "</table>";
+															echo "</div>";
 															$i ++;
 														}
 															else
 														{
-											
 															echo "Veuillez choisir un produit!";
 					    								}
 
@@ -72,7 +71,7 @@
 	    									<input  type="submit" name="valider2" value="valider">
 
 	    									</form>
-	    												<?php
+	    									<?php
 
     										}
     										else
@@ -83,16 +82,53 @@
     											$quantiteproduit=$val[2];
     											$prixglobal=$qtt*$quantiteproduit;
     											$req2="INSERT INTO commande (id_utilisateur,id_produit,prixproduit,quantiteproduit,prixglobal,dateajout) VALUES ('$id_utilisateurs','$retour','$quantiteproduit','$qtt','$prixglobal',NOW()) ";
-
     											$query2=mysqli_query($connexion,$req2);
-    								
-    											?>
-								<?php
-								
     										}
-    							
-							?>
-							</div>
+    											?>
+    										</div>
+    										
+    										<div id="contavis">
+    										<H2 class="titre">Les Avis sur ce produit</H2>
+											<?php
+    										
+    											$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+												$retour=$_GET['p'];
+												$id_utilisateurs=$_SESSION['login'];
+												//var_dump($id_utilisateurs);
+												$reponse2 = $connexion->query("SELECT utilisateurs.login,commentaires,dateavis FROM avis INNER JOIN utilisateurs on id_utilisateur=utilisateurs.id WHERE id_produit=$retour ORDER BY dateavis DESC LIMIT 5");
+												$rep2=$reponse2->fetchAll();
+												
+												$j=0;
+												foreach ($rep2 as $value) {
+																if (!empty($value)) 
+
+														{
+															echo "<div id='avisprod'>";
+															echo "<table>";
+															echo "<tr>";
+															echo "<th>Nom</th>";
+															echo "<th>Avis</th>";
+															echo "<th>Date</th>";
+															echo "</tr>";
+															echo "<tr>";
+															echo "<td>".$value[0]."</td>";
+															echo "<td>".$value[1]."</td>";
+															echo "<td>".$value[2]."</td>";
+															echo "</tr>";
+															echo "</table>";
+															echo "</div>";
+
+															$i ++;
+														}
+															else
+														{
+											
+															echo "Pas de commentaires pour cet article";
+					    								}
+
+					    							}
+												?>
+												</div>
 						</section>
 						
 				
