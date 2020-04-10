@@ -23,7 +23,7 @@
     if(isset($_GET['id']))
     {
       ?>
-      
+
       <section id="connexion">
         <?php
       // include qui permet de voir les info personel
@@ -50,7 +50,7 @@
 
           <?php
           
-          $comd= "SELECT produits.prixproduit,nomproduit,quantiteproduit,image,id_produit FROM `commande` inner join produits on commande.id_produit = produits.id  WHERE id_utilisateur = '".$data['id']."'";
+          $comd= "SELECT produits.prixproduit,nomproduit,quantiteproduit,image,id_produit FROM `commande` inner join produits on commande.id_produit = produits.id  WHERE id_utilisateur = '".$data['id']."' ORDER BY dateajout DESC LIMIT 9";
 
           $cmdquery= mysqli_query($connexion,$comd);
           $resultatcmd= mysqli_fetch_all($cmdquery);
