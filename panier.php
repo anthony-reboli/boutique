@@ -10,8 +10,8 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="boutique.css">
 	<title>Panier</title>
 </head>
-		<body>
-
+		<body id="pagepanier">
+							<section id="contpanier">
 
  								<h1>Votre Panier</h1>
   				<?php
@@ -47,7 +47,7 @@ session_start();
 										}
 										 
 									}
-									
+
 									$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 									$req=$connexion->query("SELECT SUM(prixglobal) FROM `commande` WHERE id_utilisateur=$id_utilisateurs");
 									$total = $req->fetchAll();
@@ -66,9 +66,9 @@ session_start();
 									$req="INSERT INTO panier (id_utilisateur,id_produit,datepanier,prixtotal) VALUES ('$id_utilisateurs','$id_produits',NOW(),'$prixtotal')";
 
 									$query=mysqli_query($connexion,$req);
-
+									header("location:paiement.php")
 									?>	
-									<a href="paiement.php">Payer</a>
+								
 									<?php
 
 									var_dump($query);	
@@ -77,8 +77,12 @@ session_start();
 														
 							?>
 							<form method="post">
-								<input type="submit" name="ajoutpanier"/>
+								<button id="ajoutpanier"  name="ajoutpanier"/><img width="50" height="50" src="upload/panier.jpg"></button>
 							</form>
+						</section>
+						<footer>
+								<?php include("footer.php");?>
+						</footer>
 	
 			</body>
 </html>

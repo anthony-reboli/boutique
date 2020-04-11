@@ -7,7 +7,8 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="boutique.css">
 	<title>Paiement</title>
 </head>
-		<body>
+		<body id="paiement">
+
 			<header>
 				 <?php include("bar-nav.php");?>
 			</header>
@@ -21,7 +22,7 @@ session_start();
 			
 			?>
 
-			<h1 class="titre">Le montant total à payer est de:<?php echo $res[0][0]?>€</h1>
+			<h1 id="montant">Le montant total à payer est de:<?php echo $res[0][0]?>€</h1>
 
 			<?php
 			
@@ -32,13 +33,15 @@ session_start();
 			$connexion=mysqli_connect("localhost","root","","boutique");
 			$req2=("DELETE FROM panier WHERE id_utilisateur=$id_utilisateurs");
 			$query3=mysqli_query($connexion,$req2);
-			echo "Votre paiement a bien été effectué";
+			
+			echo"Votre paiement a bien été effectué";
 				
 				}
 			}
 			?>
 			<h1 class="titre">Votre paiement</h1>
-			<div id="paiement">
+			<img id="logopaiement" height="100" width="400" src="upload/paiementsecur.jpg">
+			<div id="contpaiement">
  			<form method="post"><b>
  				<H2>Information CB</H2><br>
  				<label>TYPE CB</label><br>
@@ -59,7 +62,11 @@ session_start();
  			</form>
  			</div>
 		
-			</body>
+			
+		<footer>
+		<?php include("footer.php");?>
+		</footer>
+	</body>
 </html>
 
 

@@ -10,9 +10,10 @@
 				<header>
 				<?php	include("bar-nav.php");?>
 				</header>
-							<H1 class="titre">Ma Sélection</H1>
+							
 		
 					<section>
+						<H1 class="titre">Ma Selection</H1>
 								<?php
  							
 								$connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
@@ -32,17 +33,16 @@
 															echo "<div id='contenueproduit' >";
 															echo "<table id='contenue'>";
 															echo "<tr>";
-															echo "<th>Nom produit</th>";
-															echo "<th>Description</th>";
-															echo "<th>Image</th>";
-											
-															echo "<th>Prix</th>";
+															echo "<th id='nom'>Nom</th>";
+															echo "<th id='nom'>Description</th>";
+															echo "<th id='nom'>Image</th>";
+															echo "<th id='nom'>Prix</th>";
 															echo "</tr>";
 															echo "<tr>";
-															echo "<td>".$val[1]."</td>";
-															echo "<td>".$val[3]."</td>";
-															echo "<td><img heigh=400px width=400px src=\"upload/".$val[4]."\"></td>";
-															echo "<td>".$val[2]."€</td>";
+															echo "<td id='resultnom'>".$val[1]."</td>";
+															echo "<td id='resultnom'>".$val[3]."</td>";
+															echo "<td id='resultnom'><img class='photo' heigh=400px width=400px src=\"upload/".$val[4]."\"></td>";
+															echo "<td id='resultnom'>".$val[2]."€</td>";
 															echo "</tr>";
 															echo "</table>";
 															echo "</div>";
@@ -57,22 +57,23 @@
 								    		}
 								    		?>
 								    		<div id="qts">
-								    			<H2 class="titre">Entrer une quantité</H2>
+								    			<H2 class="titre">Entrer une quantite</H2>
 								    		<?php
 
 									
     										if (empty($_POST['quantiteproduit'])) 
     										{
 
-	    									//echo "Veuillez entrer une quantité à ajouter au panier";
+	    									
 	    									?>
 	    									<form class="titre" method="post" >
-	    									<input type="number" name="quantiteproduit" min="1" max="10"/><br>
-	    									<input  type="submit" name="valider2" value="valider">
-
+	    									<input id="quantiteproduit" type="number" name="quantiteproduit" min="1" max="10"/><br>
+	    									</div>
+	    									<button id="btvalprod" name="valider2" value="valider"><img id="imgbtval" height="100" width="100" src="upload/ajout.png"></button>
 	    									</form>
-	    									<?php
 
+	    									<?php
+	    									
     										}
     										else
     										{
@@ -83,9 +84,10 @@
     											$prixglobal=$qtt*$quantiteproduit;
     											$req2="INSERT INTO commande (id_utilisateur,id_produit,prixproduit,quantiteproduit,prixglobal,dateajout) VALUES ('$id_utilisateurs','$retour','$quantiteproduit','$qtt','$prixglobal',NOW()) ";
     											$query2=mysqli_query($connexion,$req2);
+    											header("location:panier.php");
     										}
     											?>
-    										</div>
+    										
     										
     										<div id="contavis">
     										<H2 class="titre">Les Avis sur ce produit</H2>
@@ -106,14 +108,14 @@
 															echo "<div id='avisprod'>";
 															echo "<table>";
 															echo "<tr>";
-															echo "<th>Nom</th>";
-															echo "<th>Avis</th>";
-															echo "<th>Date</th>";
+															echo "<th id='nom'>Nom</th>";
+															echo "<th id='nom'>Avis</th>";
+															echo "<th id='nom'>Date</th>";
 															echo "</tr>";
 															echo "<tr>";
-															echo "<td>".$value[0]."</td>";
-															echo "<td>".$value[1]."</td>";
-															echo "<td>".$value[2]."</td>";
+															echo "<td id='resultnom'>".$value[0]."</td>";
+															echo "<td id='resultnom'>".$value[1]."</td>";
+															echo "<td id='resultnom'>".$value[2]."</td>";
 															echo "</tr>";
 															echo "</table>";
 															echo "</div>";
@@ -130,6 +132,9 @@
 												?>
 												</div>
 						</section>
+						<footer>
+								<?php include("footer.php");?>
+						</footer>
 						
 				
 			</body>

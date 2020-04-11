@@ -98,6 +98,30 @@ ol{
 	
 
 	}
+#foot{
+	margin-top: 50px;
+	background-color:#79b123b8;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 100px;
+	width: 100%;
+	 
+}
+
+.logo{
+	border-radius: 100%;
+}
+p{
+	color:green;
+}
+.photo{
+	border:solid green ;
+	border-radius: 15%;
+}
+
+
 /*PAGE ADMINISTRATEUR*/
 #pageadmin{
 	background-image: url('upload/infusions.jpg');
@@ -118,6 +142,8 @@ ol{
 
 }
 .titre{
+	font-family: "UnitedStates.ttf";
+	color: green;
 	font-size: 40px;
 	text-align: center;
 }
@@ -129,23 +155,57 @@ ol{
 	font-family: bold;
 }
 /*PAGE PRODUITS*/
+@font-face {
+  font-family: "UnitedStates.ttf";
+  font-style: normal;
+  font-weight: normal;
+  src: local('upload/UnitedStates.ttf'), url('upload/UnitedStates.ttf') format('truetype');
+
+}
 #pageproduit{
-	background-color: green;
+	background-image: url("upload/theproduit.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	
 }
+#quantiteproduit{
+	cursor: pointer;
+	margin-bottom: 50px;
+	border-radius: 25%;
+    height: 40px;
+    width: 100px;
+    border-color: greenyellow;
+    font-size: 25;
+    color: green;
+    text-align: center;
+    word-wrap: break-word;
+}
 #contenueproduit{
-	background-color: yellow;
+	border:double;
+	background-color: #79b123b8;
+	width: 1100px;
 	display: flex;
 	flex-direction:column;
 	justify-content: center;
+	margin-left: 400px;
+    border-radius: 20px;
 
 
 }
+#btvalprod{
+	margin-top: 50px;
+	margin-left: 900px;
+	background-color: #79b123b8;
+	cursor: pointer;
+	border-radius: 100%;
+	border:double;
+	
+}
 #contenue{
-	background-color: pink;
+	background-color: ;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -154,35 +214,117 @@ ol{
 }
 
 #qts{
+	margin-top: 50px;
+	border:double;
+	width: 800px;
+	background-color: #79b123b8;
+	margin-left: 566px;
+    border-radius: 20px;
 
-	border: unset;
 	
 }
+#imgbtval{
+	border-radius: 100%;
+}
 #avisprod{
-		background-color: pink;
+	border:double;
 	display: flex;
 	justify-content:center;
 	align-items: center;
+	width: 800px;
+	background-color: #79b123b8;
+	margin-left: 550px;
+	border-radius: 20px;
+}
+#nom{
+	font-family: "UnitedStates.ttf";
+	font-size: 25px;
+	color: green;
+}
+#resultnom{
+	font-family: bold;
+	color: black;
+	font-size: 20px;
+
+
 }
 /*PAGE PANIER*/
 #pagepanier{
-	background-color: green;
+	background-image: url("upload/ppanier.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 
 }
-#ajoutpanier{
-	text-decoration: none;
-	background-image: url('upload/panier.jpg');
-}
-/*PAGE PAIEMENT*/
-#paiement{
-	
+#contpanier{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	word-wrap: break-word;
+}
+#panier{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: red;
+}
+#pan{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+.ajoutpanier{
+	height: 100px;
+	width: 100px;
+	cursor: pointer;
+	border-radius: 100%;
+	border:double;
+}
+#suppprod{
+	border:double;
+}
+/*PAGE PAIEMENT*/
+#paiement{
+	background-image: url("upload/ppaiement.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	margin-top: 70px;
+
+}
+#contpaiement{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 25px;
+	width: 400px;
+	height: 400px;
+	background-color: #79b123b8;
+	font-size: 15px;
+	margin-top: 30px;
+	margin-left: 750px;
+	font-family: cursive;
+
+}
+#montant{
+	font-family: cursive;
+	text-align: center;
+	padding-top: 100px
+	font-size: 15px;
+	color:green;
+}
+#logopaiement{
+	margin-left: 750px;
 }
 
 
