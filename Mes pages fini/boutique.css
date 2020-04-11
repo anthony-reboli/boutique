@@ -1,0 +1,364 @@
+
+/*connexion*/
+
+#connexionbody{
+	background-image: url(https://i.pinimg.com/originals/6c/0e/02/6c0e023d93b60cb02e84c729959ec5c2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.bouton {
+    background-color: #00800000;
+    border: 1px solid #00800000;
+    color: #eee;
+    cursor: pointer;
+}
+
+#maincon{
+	min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteneur1{
+    background-color: #6c952e80;
+    border: solid 1px black;
+    width: 364px;
+    height: 236px;
+    margin-top: 6%;
+    text-align: center;
+}
+
+
+/*slide*/
+
+.slider{
+    width: 400px;
+    height: 200px;
+    border: solid 1px #555;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 69px;
+    margin-top: 3%;
+}
+
+#slider-list{
+list-style-type:none;
+display:flex;
+margin:0;
+position:absolute;
+left:0;
+top:0;
+padding:0;
+animation:slide 15s linear infinite;
+}
+
+#slider-list img{
+width:400px;
+height:200px;
+margin:0;
+}
+
+@keyframes slide{
+0%{left:0px;}
+10%{left:0px;}
+35%{left:-100%;}
+45%{left:-100%;}
+75%{left:-200%;}
+85%{left:-200%;}
+90%{left:0px;}
+}
+
+/*inscription*/
+#h1ins{
+	    margin-left: 122px;
+}
+.boutonin{
+	font-size: 25px;
+    margin-top: 6px;
+    background-color: #00800000;
+    border: 1px solid #00800000;
+    color: #eee;
+    cursor: pointer;
+}
+.labins{
+	font-size: 25px;
+	color:#26ec2e;
+}
+#inscriptionbod{
+	background-image: url(https://i.pinimg.com/originals/6c/0e/02/6c0e023d93b60cb02e84c729959ec5c2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#inscriptionmain{
+    min-height: 377px;
+    margin-left: 38%;
+    margin-top: 2%;
+}
+#forminsc{
+    border: solid 1px black;
+    height: 476px;
+    width: 400px;
+    text-align: center;
+    background-color: #6f993185;
+}
+
+/*boutique*/
+
+#headB{
+	background-color: #d9e094;
+}
+#boutique{
+	margin:0;
+	padding: 0;
+	background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-tea-single-poster-background-material-image_146850.jpg);
+	display: flex;
+	background-repeat: no-repeat;
+	background-size: cover;
+	flex-direction: column;
+
+}
+
+
+
+.theb{
+ display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid 1px black;
+    height: 366px;
+    background-color: #e7e8da4f;
+    margin-left: 38px;
+    width: 31%;
+    align-items: center;
+    margin-top: 31px;
+}
+
+#cont_b{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+#notreboutique{
+	min-height: 1000px;
+       display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#lab_b{
+		    	    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#form_b2{
+
+		    	    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#formulaire{
+
+	display: flex;
+    flex-direction: row;
+    
+    justify-content: space-around;
+    background-color: #d9e094;
+
+}
+
+
+
+.imagebout{
+    height: 143px;
+    width: 162px;
+        border-radius: 52px;
+    border: solid 3px green;
+}
+
+
+.p_b{
+	color: black;
+    font-size: 25px;
+}
+
+.dnp{
+	    font-size: 18px;
+    font-family: cursive;
+}
+
+/*index*/
+#bodind{
+	background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-tea-single-poster-background-material-image_146850.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+#mainindex{
+display: flex;
+flex-direction: column;
+
+}
+.indexp{
+	height: 125px;
+	width: 125px; 
+}
+
+#newp{
+	display: flex;
+}
+
+#photorec{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 255px;
+    width: 100%;
+    display: flex;
+
+}
+#presentation{
+    background-color: #cddc3929;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 345px;
+    width: 100%;
+
+}
+
+.preind{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #cddc39c4;
+    align-items: center;
+
+}
+
+.blocI{
+	font-size: 20px;
+    height: 155px;
+    width: 402px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#h1I{
+	text-align: center;
+}
+
+.imagebout2{
+    height: 162px;
+    width: 162px;
+    border-radius: 52px;
+    border: solid 3px green;
+}
+
+.titreI{
+height: 7px;
+    width: 227px;
+}
+
+
+
+/*profil.php*/
+
+.bodyc{
+	background-image: url(https://i.pinimg.com/originals/5a/11/c8/5a11c8f0175d4cc4763daf935d3ef60e.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+#formbo{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.label1{
+    font-size: 25px;
+    color: #040404;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.imageavis{
+    height: 325px;
+    width: 325px;
+    border: double 9px green;
+}
+
+
+#connexion{
+    border: solid 1px black;
+    height: 284px;
+    width: 957px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 25px;
+    align-items: center;
+
+}
+
+#commandepro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    min-height: 200px;
+}
+.theb2{
+display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid 1px black;
+    height: 366px;
+    background-color: #e7e8da4f;
+    margin-left: 38px;
+    width: 31%;
+    align-items: center;
+    margin-top: 31px;
+}
+
+#mainprof{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.profform{
+	font-size: 25px; 
+}
+
+#story{
+    color: #aee0f9;
+    font-size: 25px;
+    background-color: #009688ba;
+    border border: double;
+    border: double 5px #62aeea;
+}
+}
+
+footer{
+	min-width: 125px;
+	min-height: 125px;
+	background-color: #d9e094;
+}
+
+
