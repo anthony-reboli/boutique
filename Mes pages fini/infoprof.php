@@ -16,10 +16,10 @@
                 </p>  
            </form>
 
-         </div>
-         <div id="ifp">
-        <h1>Info Personel</h1><br>
       </div>
+         <div id="ifp">
+            <h1>Info Personel</h1><br>
+        </div>
 
          <div id="info-prof">
 
@@ -31,4 +31,4 @@
           <p class="profform">Code Postale: <?php echo $data['codepostal']?></p>
           <p class="profform">Email: <?php echo $data['email']?></p>
 
-      </div>
+        </div>
