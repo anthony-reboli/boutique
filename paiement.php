@@ -33,31 +33,34 @@ session_start();
 			$connexion=mysqli_connect("localhost","root","","boutique");
 			$req2=("DELETE FROM panier WHERE id_utilisateur=$id_utilisateurs");
 			$query3=mysqli_query($connexion,$req2);
+		
 			
-			echo"<p id='validp'> Votre paiement a bien été effectué!<br>Merci de votre visite <br>A bientot</p>";
+			echo"<p id='validp'> Votre paiement a bien été effectué!<br>Merci de votre visite! <br>A bientot!</p>";
 				
 				}
+
 			}
+			
 			?>
 			<h1 class="titre">Votre paiement</h1>
 			<img id="logopaiement" height="100" width="400" src="upload/paiementsecur.jpg">
 			<div id="contpaiement">
- 			<form method="post"><b>
+ 			<form class="formpaiement"method="post"><b>
  				<H2>Information CB</H2><br>
  				<label>TYPE CB</label><br>
  				<label>Choisir:</label><br>
-				<select name="select"><br>
-			    <option value="">Choisir option-</option>
+				<select class="formpaiement" name="select"><br>
+			    <option class="formpaiement" value="">Choisir option-</option>
 			    <option value="visa">Visa</option>
 			    <option value="master">Mastercard</option>
 			    <option value="amex">AMEX</option>
 				</select><br>
  				<label>Numéro CB</label><br>
- 				<input type="number" name="codecb"><br>
+ 				<input class="formpaiement" type="number" name="codecb"><br>
  				<label>Code Sécurité</label><br>
- 				<input type="number" name="codesec"><br>
+ 				<input class="formpaiement" type="number" name="codesec"><br>
  				<label>Nom du Porteur</label><br>
- 				<input type="text" name="nomcb"><br>
+ 				<input class="formpaiement" type="text" name="nomcb"><br>
  				<button id="btpayer" name="payer"><img width="50" height="30" src="upload/boutonpayer.png"></button><br>	
  			</form>
  			</div>

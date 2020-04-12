@@ -147,6 +147,7 @@ p{
 	font-size: 40px;
 	text-align: center;
 }
+
 .form{
 	display: flex;
 	flex-direction: column;
@@ -265,7 +266,9 @@ p{
 
 }
 #contpanier{
-	background-color: #dcdcdcab;
+	background-image: url("upload/ppaiement.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -331,11 +334,12 @@ p{
 	border-radius: 25px;
 	width: 400px;
 	height: 400px;
-	background-color: #79b123b8;
+	background-image: url("upload/ppaiement.jpg");
 	font-size: 15px;
 	margin-top: 30px;
 	margin-left: 750px;
 	font-family: cursive;
+	border:double;
 
 }
 #montant{
@@ -348,14 +352,25 @@ p{
 #logopaiement{
 	margin-left: 750px;
 }
+.formpaiement{
+	border-radius: 15%;
+}
 #validp{
 	color: green;
     text-align: center;
     font-family: cursive;
     font-size: 25px;
 }
+
 #btpayer{
 	cursor: pointer;
+	height: 75px;
+	width: 75px;
+	margin-top: 30px;
+	margin-left: 40px;
+	cursor: pointer;
+	border-radius: 100%;
+	border:double;
 }
 
 
