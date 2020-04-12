@@ -34,7 +34,7 @@ session_start();
 			$req2=("DELETE FROM panier WHERE id_utilisateur=$id_utilisateurs");
 			$query3=mysqli_query($connexion,$req2);
 			
-			echo"Votre paiement a bien été effectué";
+			echo"<p id='validp'> Votre paiement a bien été effectué!<br>Merci de votre visite <br>A bientot</p>";
 				
 				}
 			}
@@ -58,7 +58,7 @@ session_start();
  				<input type="number" name="codesec"><br>
  				<label>Nom du Porteur</label><br>
  				<input type="text" name="nomcb"><br>
- 				<input type="submit" name="payer" value="Payer"><br>	
+ 				<button id="btpayer" name="payer"><img width="50" height="30" src="upload/boutonpayer.png"></button><br>	
  			</form>
  			</div>
 		

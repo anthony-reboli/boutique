@@ -13,7 +13,7 @@ session_start();
 		<body id="pagepanier">
 							<section id="contpanier">
 
- 								<h1>Votre Panier</h1>
+ 								<h1 class="titre">Votre Panier</h1>
   				<?php
  							
                                 $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
@@ -28,16 +28,16 @@ session_start();
 						        				          
 											echo "<table width=400px>";
 											echo "<tr>";
-											echo "<th>Nom produit</th>";
-											echo "<th>Image</th>";
-											echo "<th>Quantité</th>";
-											echo "<th>Prix total</th>";
+											echo "<th class='nom'>Nom produit</th>";
+											echo "<th class='nom'>Image</th>";
+											echo "<th class='nom' >Quantité</th>";
+											echo "<th class='nom'>Prix total</th>";
 											echo "</tr>";
 											echo "<tr>";
-											echo "<td>".$values[8]."</td>";
+											echo "<td class='nom'>".$values[8]."</td>";
 											echo "<td><img heigh=150px width=150px src=\"upload/".$values[11]."\"></td>";
-											echo "<td>".$values[3]."</td>";
-											echo "<td>".$values[5]."€</td>";
+											echo "<td class='nom'>".$values[3]."</td>";
+											echo "<td class='nom'>".$values[5]."€</td>";
 											echo "</tr>";
 											echo "</table>";
 											include("quantite.php");
@@ -53,7 +53,7 @@ session_start();
 									$total = $req->fetchAll();
 													   			
 									?>
-									<p>Le montant total est : <?php echo "".$total[0][0].""?>€</p>
+									<p class="nomp">Le montant total est : <?php echo "".$total[0][0].""?>€</p>
 									<?php
 
 									if (isset($_POST['ajoutpanier'])) 
@@ -71,7 +71,7 @@ session_start();
 								
 									<?php
 
-									var_dump($query);	
+									//var_dump($query);	
 									
 									}
 														

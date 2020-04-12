@@ -11,6 +11,7 @@
 		
 				$eff= ("DELETE FROM `commande` WHERE id=$id_commande AND  id_produit =$id_produits AND id_utilisateur=$id ");
 				$query2=mysqli_query($connexion,$eff);
+				
 	
 		}
 	
