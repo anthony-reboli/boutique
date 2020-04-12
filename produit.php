@@ -29,7 +29,7 @@
 															if (!empty($val)) 
 														{
 															echo "<div id='contenueproduit' >";
-															echo "<table id='contenue'>";
+															echo "<table id='contenue2'>";
 															echo "<tr>";
 															echo "<th class='nomp'>Nom</th>";
 															echo "<th class='nomp'>Description</th>";
@@ -61,9 +61,10 @@
 	    									?>
 	    									<form class="titre" method="post" >
 	    									<input id="quantiteproduit" type="number" name="quantiteproduit" min="1" max="10"/><br>
-	    									</div>
-	    									<button id="btvalprod" name="valider2" value="valider"><img id="imgbtval" height="100" width="100" src="upload/ajout.png"></button>
+	    							
+	    									<button id="btvalprod" name="valider2" value="valider"><img id="imgbtval" height="65" width="65" src="upload/ajout.png"></button>
 	    									</form>
+	    									</div>
 
 	    									<?php
 	    									

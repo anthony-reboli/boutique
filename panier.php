@@ -26,7 +26,7 @@ session_start();
 								{
 						        		if (!empty($values)) {
 						        				          
-											echo "<table width=400px>";
+											echo "<table id='contenue' width=400px>";
 											echo "<tr>";
 											echo "<th class='nom'>Nom produit</th>";
 											echo "<th class='nom'>Image</th>";
@@ -77,7 +77,7 @@ session_start();
 														
 							?>
 							<form method="post">
-								<button id="ajoutpanier"  name="ajoutpanier"/><img width="50" height="50" src="upload/panier.jpg"></button>
+								<button class="ajoutpanier"  name="ajoutpanier"/><img width="50" height="50" src="upload/panier.jpg"></button>
 							</form>
 						</section>
 						<footer>
