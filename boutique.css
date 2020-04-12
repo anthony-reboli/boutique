@@ -185,8 +185,10 @@ p{
     word-wrap: break-word;
 }
 #contenueproduit{
+	background-image: url("upload/ppaiement.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	border:double;
-	background-color: #79b123b8;
 	width: 800px;
 	height: 650px;
 	display: flex;
