@@ -10,7 +10,8 @@
     <li class="menu-item"><a href="index.php">Home</a></li>
     <li class="menu-item"><a href="connexion.php">Connexion</a></li>
     <li class="menu-item"><a href="inscription.php">Inscription</a>
-    <li class="menu-item"><a href="#foot">Contact</a></li>
+     <li class="menu-item"><a href="boutique.php">Boutique</a></li>
+    
   </ol>
 </nav>
 

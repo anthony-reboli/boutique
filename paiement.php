@@ -36,12 +36,14 @@ session_start();
 		
 			
 			echo"<p id='validp'> Votre paiement a bien été effectué!<br>Merci de votre visite! <br>A bientot!</p>";
-				
+	
+
 				}
 
 			}
 			
 			?>
+
 			<h1 class="titre">Votre paiement</h1>
 			<img id="logopaiement" height="100" width="400" src="upload/paiementsecur.jpg">
 			<div id="contpaiement">
