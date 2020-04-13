@@ -384,6 +384,11 @@ p{
 	flex-direction: column;
 	justify-content: center;
 }
+#logo{
+	background-color: #4d5641;
+	height: 150px;
+	width: 200px;
+}
 #photorec{
 	display: flex;
 	flex-direction: row;

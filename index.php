@@ -10,6 +10,10 @@ session_start();
     <link rel="stylesheet" href="boutique.css">
 </head>
 <header>
+    <div id="logo">
+    <img width="200" height="100" src="upload/logo.png">
+    <p style="text-align:center " >Greg & Antho</p>
+    </div>
      <?php  include("bar-nav.php");?>
 </header>
 
