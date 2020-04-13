@@ -15,64 +15,68 @@ if (!isset($_SESSION["login"])) {
 <head>
     <meta charset="UTF-8">
     <title> Inscription</title>
-    <link rel="stylesheet" href="forum.css">
+    <link rel="stylesheet" href="boutique.css">
 </head>
 
-<body class="inscription">
+<body id="inscriptionbod">
+    <header>
+        <?php include("bar-nav.php");?>
+    </header>
+    <main id="inscriptionmain">
     
 
-    
+    <h1 style="color:#26ec2e;margin-left: 115px;"> Inscription </h1>
         <section>
-        <h1> Inscription </h1>
+        
 
-        <form method='POST' action='inscription.php'>
+        <form id="forminsc" method='POST' action='inscription.php'>
 
 
             <article>
-                <label> Login </label>
-                <input type="text" name='login' required />
+                <label class="labins"> Login </label>
+                <br><input type="text" name='login' required />
             </article>
 
             <article>
-                <label> Nom </label>
-                <input type="text" name='nom' required />
-            </article>
-
-
-            <article>
-                <label> Prénom </label>
-                <input type="text" name='prenom' required />
-            </article>
-
-            <article>
-                <label> Mot de passe </label>
-                <input type="password" name='mdp1' required />
-            </article>
-
-            <article>
-                <label> Confirmation de mot de passe </label>
-                <input type="password" name='mdp2' required />
+                <label class="labins"> Nom </label>
+                <br><input type="text" name='nom' required />
             </article>
 
 
             <article>
-                <label> Votre adresse </label>
-                <input type="text" name='adresse' required />
+                <label class="labins"> Prénom </label>
+                <br><input type="text" name='prenom' required />
+            </article>
+
+            <article>
+                <label class="labins"> Mot de passe </label>
+                <br><input type="password" name='mdp1' required />
+            </article>
+
+            <article>
+                <label class="labins"> Confirmation de mot de passe </label>
+                <br><input type="password" name='mdp2' required />
             </article>
 
 
             <article>
-                <label> Votre code postal </label>
-                <input type="number" name='code' required />
+                <label class="labins"> Votre adresse </label>
+                <br><input type="text" name='adresse' required />
             </article>
 
 
             <article>
-                <label> Votre Email </label>
-                <input type="email" name='email' required />
+                <label class="labins"> Votre code postal </label>
+                <br><input type="number" name='code' required />
             </article>
 
-            <input class="bouton" type='submit' name='inscription' value='Inscription' />
+
+            <article>
+                <label class="labins"> Votre Email </label>
+                <br><input type="email" name='email' required />
+            </article>
+
+            <button class="boutonin" name="inscription"><img height="98" width="78" src="upload/buton2.png"></button>
 
             <?php
 
@@ -138,7 +142,8 @@ if (!isset($_SESSION["login"])) {
     </section>
 
 
-   
+   </main>
+<?php include('footer.php');?>
 
 </body>
 

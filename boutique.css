@@ -1,3 +1,109 @@
+/*connexion*/
+
+#connexionbody{
+
+	background-image: url(https://i.pinimg.com/originals/6c/0e/02/6c0e023d93b60cb02e84c729959ec5c2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.bouton {
+    background-color: #00800000;
+    border: 1px solid #00800000;
+    color: #eee;
+    cursor: pointer;
+}
+
+#maincon{
+	min-height: 730px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteneur1{
+    background-color: #6c952e80;
+    border: solid 1px black;
+    width: 364px;
+    height: 280px;
+    margin-top: 6%;
+    text-align: center;
+}
+
+
+/*slide*/
+
+.slider2{
+    width: 400px;
+    height: 200px;
+    border: solid 1px #555;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 69px;
+    margin-top: 3%;
+}
+
+#slider-list2{
+list-style-type:none;
+display:flex;
+margin:0;
+position:absolute;
+left:0;
+top:0;
+padding:0;
+animation:slide 15s linear infinite;
+}
+
+#slider-list2 img{
+width:400px;
+height:200px;
+margin:0;
+}
+
+@keyframes slide{
+0%{left:0px;}
+10%{left:0px;}
+35%{left:-100%;}
+45%{left:-100%;}
+75%{left:-200%;}
+85%{left:-200%;}
+90%{left:0px;}
+}
+
+/*inscription*/
+#h1ins{
+	    margin-left: 122px;
+}
+.boutonin{
+	font-size: 25px;
+    margin-top: 6px;
+    background-color: #00800000;
+    border: 1px solid #00800000;
+    color: #eee;
+    cursor: pointer;
+}
+.labins{
+	font-size: 25px;
+	color:#26ec2e;
+}
+#inscriptionbod{
+	background-image: url(https://i.pinimg.com/originals/6c/0e/02/6c0e023d93b60cb02e84c729959ec5c2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#inscriptionmain{
+    min-height: 685px;
+    margin-left: 38%;
+    margin-top: 2%;
+}
+#forminsc{
+    border: solid 1px black;
+    height: 550px;
+    width: 400px;
+    text-align: center;
+    background-color: #6f993185;
+}
 
 a{
 	text-align:center;

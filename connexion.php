@@ -42,28 +42,31 @@
 <html>
 <head>
     <title>Forum - Connexion</title>
-    <link rel="stylesheet" type="text/css" href="forum.css">
+    <link rel="stylesheet" type="text/css" href="boutique.css">
     <meta charset="utf-8">
 </head>
-<body class="inscription">
-
+<body id="connexionbody">
+    <header>
+        <?php include("bar-nav.php");?>
+    </header>
+<main id="maincon">
    
     
   
                 <?php
                 if ( !isset($_SESSION['login']) ) {
                     ?>
-        
+                
                      <section class="conteneur1">
-                        <h1>Connexion</h1>
+             <h1 style="color:#26ec2e;">Connexion</h1>
                     
                     <form method="post" action="connexion.php">
                     
                             <label>Identifiant</label>
-                            <input type="text" name="login" ><br />
+                            <br><input type="text" name="login" ><br />
                             <label>Mot de passe</label>
-                            <input type="password" name="password" ><br />
-                            <input class="bouton" type="submit" value="Se connecter" name="connexion" >
+                            <br><input type="password" name="password" ><br />
+                            <button class="bouton" name="connexion"><img height="118" width="78" src="upload/buton2.png"></button>
                         
                     </form>
                     <?php
@@ -96,7 +99,25 @@
                 }
                 ?>
         </section>
+
+
+         <div class="slider2"> 
+   <ul id="slider-list2"> 
+      <li> 
+          <img src="https://i-reg.unimedias.fr/sites/art-de-vivre/files/styles/large/public/r_tasse-the_istock.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop">
+      </li> 
+      <li> 
+          <img src="https://vegan-pratique.fr/wp-content/uploads/2018/08/the-menthe-marocain-580x387.jpg">
+      </li> 
+      <li> 
+         <img src="https://cdn.bioalaune.com/img/article/thumb/900x500/10267-tasse_de_the.jpg">
+      </li> 
+  </ul>
+ </div> 
     
-                
+       </main>
+        
+            <?php include("footer.php"); ?>
+               
     </body>
 </html>
