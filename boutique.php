@@ -178,7 +178,7 @@
                     elseif ($_POST['pagear'] == 'the' && $_POST['sc_b'] == 'sachet')  // sous categorie sachet active
                     {
                         include("pagination.php");
-                        echo" passe alalala" ;
+                    
 
                         $requete2='SELECT * FROM produits where categories = 1 and souscategories = "sachet" ORDER BY id DESC limit '.$depart.','.$arpage.' ';
 
@@ -338,20 +338,22 @@
                 $i++;
 
             }
+        ?>
 
+    </section>
+    <?php
+           echo "<div id='pag'>";
             $pagetotal= ceil($resu[0][0]/$arpage);
             for ($i=1;$i <=$pagetotal;$i++){
-                echo '<a id=lien href="boutique.php?page='.$i.'">'.$i.'</a> ';
+                echo '<a id=lien href="boutique.php?page='.$i.'">'.$i.'/</a> ';
             }
 
         }
         $requete='SELECT * FROM produits where categories = 2 ORDER BY id DESC limit '.$depart.','.$arpage.' ';
         $query=mysqli_query($bdd, $requete);
         $reponse=mysqli_fetch_all($query);
-
-        ?>
-
-    </section>
+                echo "</div>";
+                ?>
 <?php include("footer.php");?>
 </body>
 </html>
