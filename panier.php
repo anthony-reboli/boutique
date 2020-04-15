@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (isset($_SESSION['login']))
+{
  include("bar-nav.php");
  //include("classpanier.php");
 
@@ -87,6 +89,12 @@ session_start();
 			</body>
 </html>
 
+<?php 
+}
+else{
+	header("location:connexion.php");
+}
+?>
 
 
 								

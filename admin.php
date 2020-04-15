@@ -1,6 +1,8 @@
  
 <?php
 session_start();
+if (isset($_SESSION['login']) == "admin")
+{
 date_default_timezone_set('europe/paris');
 
     	if (isset($_SESSION['login'])==false)
@@ -150,3 +152,10 @@ include("bar-nav.php");?>
 </section>
 </body>
 </html>
+
+<?php 
+}
+else{
+	header("location:connexion.php");
+}
+?>
