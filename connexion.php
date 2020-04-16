@@ -41,7 +41,7 @@
 
 <html>
 <head>
-    <title>Forum - Connexion</title>
+    <title>boutique - Connexion</title>
     <link rel="stylesheet" type="text/css" href="boutique.css">
     <meta charset="utf-8">
 </head>
