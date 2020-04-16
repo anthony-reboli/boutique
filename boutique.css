@@ -108,7 +108,13 @@ background-repeat: no-repeat;
     text-align: center;
     border-radius: 25px;
     align-items: center;
+    background-image: url(upload/ppanier.jpg);
 
+}
+
+.p_b{
+	font-size: 14px;
+	
 }
 
 #commandepro{
@@ -120,11 +126,11 @@ background-repeat: no-repeat;
     min-height: 200px;
 }
 .theb2{
-display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     border: solid 1px black;
-    background-color: #e7e8da4f;
+    background-color: #e7e8daad;
     margin-left: 38px;
     width: 31%;
     align-items: center;
@@ -136,6 +142,7 @@ display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-height: 753px;
 }
 
 .profform{
@@ -740,6 +747,10 @@ p{
 	width: 400px;
 	height: 250px
 
+}
+#boubou{
+	height: 50px;
+	width: 50px;
 }
 
 .theb{
