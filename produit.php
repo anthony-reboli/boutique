@@ -1,8 +1,4 @@
-
-<?php session_start();
-if (isset($_SESSION['login']))
-{
-?>
+<?php session_start();?>
 <html>
 	<head>
 		<title>Produit</title>
@@ -135,10 +131,3 @@ if (isset($_SESSION['login']))
 				
 			</body>
 </html>
-
-<?php 
-}
-
-else {
-	header("location:connexion.php");
-}
