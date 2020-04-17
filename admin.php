@@ -52,9 +52,7 @@ include("bar-nav.php");?>
 									                $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 													$requete = $connexion->prepare("INSERT INTO produits (nomproduit, prixproduit, description, image,categories,souscategories) VALUES ('$titre', '$prix', '$description','$photo','$categories','$souscategories')");
 													$requete->execute();
-													var_dump($requete);
 												
-															//var_dump($connexion);
 									}
 								
 								}
@@ -92,10 +90,10 @@ include("bar-nav.php");?>
 									                $id = $_SESSION['id'];
 									                $categories = $_POST['categories'];
 									                $souscategories = $_POST['souscategories'];
+									                $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 													$requete2 = $connexion->prepare("UPDATE produits SET nomproduit= '$titre2', prixproduit= '$prix2', description= '$description' ,image = '$photo' ,categories = '$categories' ,souscategories ='$souscategories' WHERE nomproduit = '$titre3'");
-													//var_dump($requete2);
 													$requete2->execute();
-													var_dump($requete2);
+													
 									}
 								
 								}
@@ -127,11 +125,10 @@ include("bar-nav.php");?>
 											 			{
 											 			$titre4 = $_POST['titre4']; 
 										                $id = $_SESSION['id'];
+										                $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 									        			$requete3 = $connexion->prepare("DELETE FROM produits WHERE nomproduit = '$titre4'");
-									        			var_dump($requete3);
 									        			$requete3->execute();
 									        			
-
 				   										}						   	
 							  					}	
 		

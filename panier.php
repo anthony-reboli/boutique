@@ -20,7 +20,7 @@ session_start();
 								$id_utilisateurs=$_SESSION['id'];
 								$rep= $connexion->query("SELECT * FROM commande INNER JOIN produits ON commande.id_produit=produits.id  WHERE id_utilisateur = $id_utilisateurs");
 								$test = $rep->fetchAll();
-								//var_dump($test);
+								
 								$i=0;
 	            				foreach ($test as $values)
 								{
@@ -30,13 +30,15 @@ session_start();
 											echo "<tr>";
 											echo "<th class='nom'>Nom produit</th>";
 											echo "<th class='nom'>Image</th>";
+											echo "<th class='nom' >Prix unitaire</th>";
 											echo "<th class='nom' >Quantité</th>";
 											echo "<th class='nom'>Prix total</th>";
 											echo "</tr>";
 											echo "<tr>";
 											echo "<td class='nom'>".$values[8]."</td>";
 											echo "<td><img heigh=150px width=150px src=\"upload/".$values[11]."\"></td>";
-											echo "<td class='nom'>".$values[3]."</td>";
+											echo "<td class='nom'>".$values[9]."</td>";
+											echo "<td class='nom'>".$values[4]."</td>";
 											echo "<td class='nom'>".$values[5]."€</td>";
 											echo "</tr>";
 											echo "</table>";
